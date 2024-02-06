@@ -86,7 +86,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .error-has {
     margin: 0 0 5px;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 .error-message {

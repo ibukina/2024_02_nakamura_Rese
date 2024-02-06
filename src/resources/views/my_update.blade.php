@@ -12,7 +12,7 @@
         <input type="hidden" name="reservation_id" value="{{ $reservation->id }}">
         <div class="update-form_wrapper">
             <div class="update-title">更新</div>
-            <label class="input-date_wrapper">
+            <label class="input-wrapper">
                 <input class="form-item_input form-item_input-date" name="date" type="date" value="{{ $reservation->date }}">
             </label>
             <label class="input-wrapper">
