@@ -12,14 +12,14 @@
         <input type="hidden" name="reservation_id" value="{{ $reservation->id }}">
         <div class="update-form_wrapper">
             <div class="update-title">更新</div>
-            <label class="select-date_wrapper">
-                <input class="form-item_select form-item_select-date" name="date" type="date" value="{{ $reservation->date }}">
+            <label class="input-date_wrapper">
+                <input class="form-item_input form-item_input-date" name="date" type="date" value="{{ $reservation->date }}">
             </label>
-            <label class="select-wrapper">
-                <input class="form-item_select" name="time" type="time" value="{{ date('H:i', strtotime($reservation->time)) }}">
+            <label class="input-wrapper">
+                <input class="form-item_input" name="time" type="time" value="{{ date('H:i', strtotime($reservation->time)) }}">
             </label>
-            <label class="select-wrapper">
-                <input class="form-item_select form-item_select-number" name="number" type="text" value="{{ $reservation->number }}人">
+            <label class="input-wrapper">
+                <input class="form-item_input form-item_input-number" name="number" type="text" value="{{ $reservation->number }}人">
             </label>
             <div class="result-wrapper">
                 <table class="result-table">

@@ -27,7 +27,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     display: none;
 }
 
-.form-item_select {
+.form-item_input {
     width: 95%;
     height: 20px;
     margin-top: 7px;
@@ -42,13 +42,13 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     color: black;
 }
 
-.form-item_select-date {
+.form-item_input-date {
     width: 40%;
     padding-right: 5px;
     background-image: none;
 }
 
-.form-item_select-number {
+.form-item_input-number {
     font-weight: normal;
 }
 

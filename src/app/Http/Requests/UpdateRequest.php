@@ -36,7 +36,7 @@ class UpdateRequest extends FormRequest
             'date.date'=>'予約日を年月日で入力してください',
             'date.after'=>'明日以降の予約をお願いします',
             'time.required'=>'予約時間を入力してください',
-            'time.date_format'=>'予約時間を正しい形式で入力してください',
+            'time.date_format'=>'予約時間をhh:mmで入力してください',
             'number.required'=>'予約人数を入力してください',
             'number.string'=>'予約人数を文字列で入力してください',
             'number.max'=>'予約人数を191文字以内で入力してください'
