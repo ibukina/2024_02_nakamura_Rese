@@ -1,0 +1,65 @@
+.app-header {
+    display: flex;
+    flex-direction: row;
+    padding: 25px 50px;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.header-icon {
+    margin-right: 15px;
+}
+
+.header-back_button {
+    text-align: center;
+    height: 40px;
+    width: 40px;
+    border: 1px solid #3560F6;
+    border-radius: 5px;
+    background-color: #3560F6;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+    color: white;
+}
+
+.app-main {
+    height: 100%;
+    padding-bottom: 50px;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.header-list_logged-out{
+    padding: 50px;
+    text-align: center;
+}
+
+.header-list_logged-out_item{
+    margin: 10px 0;
+}
+
+.header-list_logged-out_item-link{
+    text-decoration: none;
+    font-size: 25px;
+    color: #3560F6;
+}
+
+.header-list_logged-in {
+    padding: 50px;
+    text-align: center;
+}
+
+.header-list_logged-in_item {
+    margin: 10px 0;
+}
+
+.header-list_logged-in_item-link {
+    text-decoration: none;
+    font-size: 25px;
+    color: #3560F6;
+}
+
+.header-list_logged-in_item-button{
+    border: none;
+    font-size: 25px;
+    color: #3560F6;
+    background: none;
+}

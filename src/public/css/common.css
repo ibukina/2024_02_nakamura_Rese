@@ -1,0 +1,36 @@
+.app-header{
+    display: flex;
+    flex-direction: row;
+    padding: 25px 50px;
+    background-color: #EEEEEE;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.header-icon{
+    margin-right: 15px;
+}
+
+.header-icon_button{
+    text-align: left;
+    height: 40px;
+    width: 40px;
+    border: 1px solid #3560F6;
+    border-radius: 5px;
+    background-color: #3560F6;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+    font-size: 6px;
+    color: white;
+}
+
+.header-icon_name{
+    font-size: 32px;
+    font-weight: bold;
+    color: #3560F6;
+}
+
+.app-main{
+    height: 100%;
+    padding-bottom: 50px;
+    background-color: #EEEEEE;
+    font-family: 'Noto Sans JP', sans-serif;
+}
