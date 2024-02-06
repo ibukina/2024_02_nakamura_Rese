@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ReservationRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -45,7 +45,7 @@ class ReservationRequest extends FormRequest
 
     protected function getRedirectUrl()
     {
-        $shop_id = $this->input("shop_id");
-        return '/detail/' . $shop_id;
+        $reservation_id = $this->input("reservation_id");
+        return '/reservation/' . $reservation_id;
     }
 }
