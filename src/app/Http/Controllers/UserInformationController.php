@@ -31,7 +31,10 @@ class UserInformationController extends Controller
     }
 
     public function destroy(Request $request){
-        Favorite::find($request->favorite_id)->delete();
+        $favorite=Favorite::find($request->favorite_id);
+        if($favorite){
+            $favorite->delete();
+        }
         return redirect('/mypage');
     }
 }
