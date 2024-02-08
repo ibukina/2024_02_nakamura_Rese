@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\LoginRequest;
-use App\Models\User;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -26,7 +25,7 @@ class AuthenticatedSessionController extends Controller
         if(Auth::attempt($credentials)){
             return redirect('/mypage');
         }
-        return redirect('/login')->with('error', 'ログイン状態が正しくありません。');
+        return redirect('/login')->with('error', 'ログイン状態が正しくないか、会員登録されていない可能性があります');
     }
 
     public function destroy(){

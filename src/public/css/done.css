@@ -1,14 +1,14 @@
-.content-thanks {
+.content-done {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.thanks-wrapper {
+.done-wrapper {
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin: 0 auto;
+    margin: 20px auto;
     width: 370px;
     height: 250px;
     background-color: white;
@@ -17,21 +17,21 @@
     box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
 }
 
-.thanks-message{
+.done-message {
     margin: 70px 0 30px;
     font-size: 20px;
     color: black;
 }
 
-.thanks-button{
+.done-button {
     margin: 0 auto;
-    width: 100px;
+    width: 50px;
     height: 28px;
-    border-radius: 5px;
+    border-radius: 4px;
     background-color: #3560F6;
 }
 
-.thanks-button_link {
+.done-button_link {
     text-decoration: none;
     font-size: 12px;
     color: white;
