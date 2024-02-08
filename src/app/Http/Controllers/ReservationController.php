@@ -6,26 +6,22 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReservationRequest;
 use App\Http\Requests\UpdateRequest;
-use App\Models\User;
 use App\Models\Reservation;
 
 class ReservationController extends Controller
 {
     public function store(ReservationRequest $request){
-        if(Auth::check()){
-            $user_id=Auth::id();
-            $number=(int)$request->number; // int型に変更
-            $reservation=[
-                'user_id'=>$user_id,
-                'shop_id'=>$request->shop_id,
-                'date'=>$request->date,
-                'time'=>$request->time,
-                'number'=>$number,
-            ];
-            Reservation::create($reservation);
-            return redirect('/done');
-        }
-        return redirect('/login')->with('message', '※予約するには会員登録後、ログインが必要です');
+        $user_id=Auth::id();
+        $number=(int)$request->number; // int型に変更
+        $reservation=[
+            'user_id'=>$user_id,
+            'shop_id'=>$request->shop_id,
+            'date'=>$request->date,
+            'time'=>$request->time,
+            'number'=>$number,
+        ];
+        Reservation::create($reservation);
+        return redirect('/done');
     }
 
     public function done(){
