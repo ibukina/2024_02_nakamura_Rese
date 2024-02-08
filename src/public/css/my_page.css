@@ -1,0 +1,261 @@
+.content-mypage {
+    display: flex;
+    flex-direction: row;
+    margin: 0 50px;
+}
+
+.reservation-wrapper {
+    width: 350px;
+    margin: 50px 10px;
+}
+
+.reservation-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.reservation-range {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 4px;
+}
+
+.reservation-information {
+    width: 310px;
+    height: 200px;
+    margin-bottom: 30px;
+    padding: 25px;
+    border-radius: 5px;
+    background-color: #3560F6;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.reservation-information_title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.reservation-update {
+    margin-right: 20px;
+    margin-left: -5px;
+}
+
+.update-button {
+    width: 20px;
+    height: 20px;
+    border: none;
+    background: none;
+}
+
+.update-button_image {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-image: url(../img/clock.png);
+    background-size: cover;
+}
+
+.reservation-number {
+    font-size: 12px;
+}
+
+.reservation-delete,
+.reservation-review {
+    margin-left: auto;
+}
+
+.delete-button,
+.review-button {
+    width: 20px;
+    height: 20px;
+    border: none;
+    background: none;
+}
+
+.delete-button_image {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-image: url(../img/cross.png);
+    background-size: cover;
+}
+
+.review-button_image {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-image: url(../img/star.png);
+    background-size: cover;
+}
+
+.table-row {
+    margin: 10px;
+    color: white;
+}
+
+.table-header {
+    width: 80px;
+    height: 27px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.table-data {
+    width: 100px;
+    height: 27px;
+    text-align: left;
+    font-size: 12px;
+}
+
+.mypage-username {
+    margin-bottom: 10px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.favorite-wrapper {
+    padding-left: 25px;
+}
+
+.favorite-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.shop-range {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.shop-container {
+    width: 300px;
+    height: 270px;
+    margin: 5px 5px 25px 0;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.shop-image_item {
+    object-fit: cover;
+    width: 100%;
+    height: 150px;
+    border-radius: 5px 5px 0 0;
+}
+
+.detail-wrapper {
+    padding: 15px 15px 0;
+}
+
+.shop-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.shop-tag_wrapper {
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+}
+
+.detail-mark_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.detail-button {
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    background-color: #3560F6;
+    font-size: 12px;
+    color: white;
+}
+
+.favorite-button {
+    width: 40px;
+    height: 30px;
+    border: none;
+    background: none;
+}
+
+.favorite-mark_image-red {
+    display: block;
+    width: 33px;
+    height: 30px;
+    background-image: url(../img/redheart.png);
+    background-size: cover;
+}
+
+.alert {
+    font-size: 14px;
+    color: #3560F6;
+}
+
+@media screen and (min-width: 769px) {
+    .reservation-title {
+        margin-bottom: 15px;
+    }
+
+    .mypage-username {
+        margin-top: -10px;
+        margin-bottom: 20px;
+    }
+
+    .favorite-title {
+        margin-bottom: 15px;
+    }
+
+    .shop-container {
+        width: 220px;
+        height: 200px;
+        margin: 5px 30px 25px 0;
+    }
+
+    .shop-image_item {
+        height: 110px;
+    }
+
+    .shop-name {
+        font-size: 12px;
+    }
+
+    .shop-tag_wrapper {
+        display: flex;
+        flex-direction: row;
+        font-size: 7px;
+        font-weight: 600;
+    }
+
+    .detail-mark_wrapper {
+        padding: 0;
+    }
+
+    .detail-button {
+        width: 70px;
+        height: 25px;
+        font-size: 10px;
+    }
+
+    .favorite-button {
+        width: 27px;
+        height: 35px;
+    }
+
+    .favorite-mark_image {
+        width: 25px;
+        height: 25px;
+    }
+
+    .favorite-mark_image-red {
+        width: 23px;
+        height: 22px;
+    }
+}
