@@ -61,9 +61,7 @@
                     <form class="favorite-form" action="/favorite" method="post">
                         @method('DELETE')
                         @csrf
-                        @foreach($favorites as $favorite)
-                        <input type="hidden" name="favorite_id" value="{{ $favorite->id }}">
-                        @endforeach
+                        <input type="hidden" name="favorite_id" value="{{ $favorites[$shop->id]->id }}">
                         <button class="favorite-button">
                             <span class="favorite-mark_image-red"></span>
                         </button>
