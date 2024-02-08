@@ -4,7 +4,7 @@
     margin: 0 50px;
 }
 
-.reservation-wrapper {
+.reservation-wrapper{
     width: 350px;
     margin: 50px 10px;
 }
@@ -49,7 +49,7 @@
     background: none;
 }
 
-.update-button_image {
+.update-button_image{
     display: block;
     width: 20px;
     height: 20px;
@@ -74,7 +74,7 @@
     background: none;
 }
 
-.delete-button_image {
+.delete-button_image{
     display: block;
     width: 20px;
     height: 20px;
@@ -90,12 +90,12 @@
     background-size: cover;
 }
 
-.table-row {
+.table-row{
     margin: 10px;
     color: white;
 }
 
-.table-header {
+.table-header{
     width: 80px;
     height: 27px;
     text-align: left;
@@ -103,24 +103,24 @@
     font-weight: normal;
 }
 
-.table-data {
+.table-data{
     width: 100px;
     height: 27px;
     text-align: left;
     font-size: 12px;
 }
 
-.mypage-username {
+.mypage-username{
     margin-bottom: 10px;
     font-size: 25px;
     font-weight: bold;
 }
 
-.favorite-wrapper {
+.favorite-wrapper{
     padding-left: 25px;
 }
 
-.favorite-title {
+.favorite-title{
     font-size: 20px;
     font-weight: bold;
 }
@@ -179,7 +179,7 @@
     color: white;
 }
 
-.favorite-button {
+.favorite-button{
     width: 40px;
     height: 30px;
     border: none;
@@ -235,6 +235,8 @@
     }
 
     .detail-mark_wrapper {
+        display: flex;
+        justify-content: space-between;
         padding: 0;
     }
 
