@@ -4,20 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
-use App\Models\Reservation;
+use Carbon\Carbon;
 use App\Models\Favorite;
 
 class UserInformationController extends Controller
 {
     public function create(){
-        if(Auth::check()){
-            $users=[Auth::user()->username];
-            $reservations=Auth::user()->reservations()->with('shop')->get();
-            $favorites=Auth::user()->favorites()->with('shop')->get();
-            return view ('my_page', compact('users', 'reservations', 'favorites'));
+        $users=[Auth::user()->username];
+        $reservations=Auth::user()->reservations()->with('shop')->get();
+        $favorites=Auth::user()->favorites()->with('shop')->get();
+        // $reviews=Auth::user()->reviews()->with('reservation')->get();
+        if(!empty($reservations)){
+            $now=Carbon::now();
+            return view ('my_page', compact('users', 'reservations', 'favorites', 'now'));
         }
-        return view('login');
+        return view ('my_page', compact('users', 'reservations', 'favorites'));
     }
 
     public function store(Request $request){

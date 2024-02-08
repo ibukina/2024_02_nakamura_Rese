@@ -21,13 +21,22 @@
                     <div class="reservation-update">
                         <form class="update-form" action="/reservation/{{ $reservation->id }}" method="get">
                             @csrf
-                            <input type="hidden" name="reservation_id" value="{{ $reservation->id }}">
                             <button class="update-button">
                                 <span class="update-button_image"></span>
                             </button>
                         </form>
                     </div>
                     <div class="reservation-number">予約{{ $loop->iteration }}</div>
+                    @if($now->greaterThan(date('Y-m-d H:i:s', strtotime($reservation->date . $reservation->time))))
+                    <div class="reservation-review">
+                        <form class="review-form" action="/review/{{ $reservation->id }}" method="get">
+                            @csrf
+                            <button class="review-button">
+                                <span class="review-button_image"></span>
+                            </button>
+                        </form>
+                    </div>
+                    @else
                     <div class="reservation-delete">
                         <form class="delete-form" action="/reservation" method="post">
                             @method('DELETE')
@@ -38,6 +47,7 @@
                             </button>
                         </form>
                     </div>
+                    @endif
                 </div>
                 <table class="reservation-table">
                     <tr class="table-row">

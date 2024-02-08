@@ -38,4 +38,3 @@ docker/mysql/data/private_key.pem
 docker/mysql/data/public_key.pem
 docker/mysql/data/server-cert.pem
 docker/mysql/data/server-key.pem
-docker/mysql/data/binlog.000024
