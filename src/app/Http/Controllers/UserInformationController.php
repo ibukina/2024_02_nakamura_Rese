@@ -13,7 +13,6 @@ class UserInformationController extends Controller
         $users=[Auth::user()->username];
         $reservations=Auth::user()->reservations()->with('shop')->get();
         $favorites=Auth::user()->favorites()->with('shop')->get();
-        // $reviews=Auth::user()->reviews()->with('reservation')->get();
         if(!empty($reservations)){
             $now=Carbon::now();
             return view ('my_page', compact('users', 'reservations', 'favorites', 'now'));
