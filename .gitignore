@@ -40,3 +40,6 @@ docker/mysql/data/server-cert.pem
 docker/mysql/data/server-key.pem
 docker/mysql/data/binlog.000024
 docker/mysql/data/ibtmp1
+docker/mysql/data/binlog.000025
+docker/mysql/data/binlog.000026
+docker/mysql/data/binlog.000027

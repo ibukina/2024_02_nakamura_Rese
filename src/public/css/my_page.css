@@ -80,6 +80,14 @@
     background-size: cover;
 }
 
+.review-button_image {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-image: url(../img/star.png);
+    background-size: cover;
+}
+
 .table-row{
     margin: 10px;
     color: white;
