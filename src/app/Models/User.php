@@ -12,6 +12,10 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function role(){
+        return $this->belongsTo('App\Models\Role');
+    }
+
     public function reservations(){
         return $this->hasMany('App\Models\Reservation');
     }

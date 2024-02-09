@@ -6,6 +6,11 @@
 
 @section('header_content')
 <div class="content-search">
+    @can('manager-only')
+    <div class="management-link_wrapper">
+        <a class="management-link" href="/management">管理画面へ</a>
+    </div>
+    @endcan
     <div class="search-form_wrapper">
         <form class="search-form" action="/search" method="post">
             @csrf

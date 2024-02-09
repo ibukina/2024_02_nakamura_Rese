@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class FavoritesTableSeeder extends Seeder
+class RolesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,16 +15,20 @@ class FavoritesTableSeeder extends Seeder
      */
     public function run()
     {
-        $favorites=[
+        $roles=[
             [
-                'user_id'=>'3',
-                'shop_id'=>'1',
+                'id'=>'1',
+                'name'=>'admin',
             ],
             [
-                'user_id'=>'3',
-                'shop_id'=>'2',
+                'id'=>'2',
+                'name'=>'manager',
+            ],
+            [
+                'id'=>'3',
+                'name'=>'user',
             ],
         ];
-        DB::table('favorites')->insert($favorites);
+        DB::table('roles')->insert($roles);
     }
 }

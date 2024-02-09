@@ -16,11 +16,26 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $param=[
-            'username'=>'test',
-            'email'=>'test@example.com',
-            'password'=>Hash::make('2DDywxxwE3VM@B2'),
+        $users=[
+            [
+                'role_id'=>'1',
+                'username'=>'admin',
+                'email'=>'admin@example.com',
+                'password'=>Hash::make('2DDywxxwE3VM@D4'),
+            ],
+            [
+                'role_id'=>'2',
+                'username'=>'manager',
+                'email'=>'manager@example.com',
+                'password'=>Hash::make('2DDywxxwE3VM@C3'),
+            ],
+            [
+                'role_id'=>'3',
+                'username'=>'test',
+                'email'=>'test@example.com',
+                'password'=>Hash::make('2DDywxxwE3VM@B2'),
+            ],
         ];
-        DB::table('users')->insert($param);
+        DB::table('users')->insert($users);
     }
 }
