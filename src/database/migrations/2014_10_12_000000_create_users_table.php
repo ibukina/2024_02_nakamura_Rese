@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('role_id')->constrained()->cascadeOnDelete();
             $table->string('username')->default('guest');
             $table->string('email')->unique()->default('guest@example.com');
             $table->timestamp('email_verified_at')->nullable();

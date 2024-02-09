@@ -10,6 +10,7 @@
         <div class="register-form_title">Registration</div>
         <form class="register-form" action="/register" method="post">
             @csrf
+            <input type="hidden" name="role_id" value="3">
             <label class="register-form_item">
                 <img class="register-form_item-icon" src="{{ asset('img/person.png') }}" alt="画像">
                 <input type="text" name="username" class="register-form_item-input" placeholder="Username">

@@ -16,7 +16,7 @@ class ReservationsTableSeeder extends Seeder
     public function run()
     {
         $param=[
-            'user_id'=>'1',
+            'user_id'=>'3',
             'shop_id'=>'1',
             'date'=>'2021-04-01',
             'time'=>'17:00:00',
