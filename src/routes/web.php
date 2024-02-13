@@ -7,6 +7,8 @@ use App\Http\Controllers\UserInformationController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ManagementController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +22,7 @@ use App\Http\Controllers\ReviewController;
 */
 
 Route::get('/', [ShopController::class, 'create']);
-Route::get('/search', [ShopController::class, 'search']);
+Route::post('/search', [ShopController::class, 'search']);
 Route::get('/detail/{shop_id}', [ShopController::class,'detail']);
 Route::get('/menu', [AuthenticatedSessionController::class, 'menu']);
 Route::get('/register', [RegisteredUserController::class, 'create']);
@@ -33,6 +35,9 @@ Route::delete('/favorite', [UserInformationController::class, 'destroy']);
 
 Route::group(['middleware'=>['auth', 'can:user-higher']], function (){
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
+});
+
+Route::group(['middleware'=>['auth', 'can:user-only']], function(){
     Route::get('/mypage', [UserInformationController::class, 'create']);
     Route::post('/reservation', [ReservationController::class, 'store']);
     Route::get('/reservation/{reservation_id}', [ReservationController::class, 'create']);
@@ -46,7 +51,7 @@ Route::group(['middleware'=>['auth', 'can:user-higher']], function (){
 Route::group(['middleware'=>['auth', 'can:manager-only']], function(){
     Route::get('/management', [ManagementController::class, 'create']);
     Route::post('/management', [ManagementController::class, 'store']);
-    Route::post('/management', [ManagementController::class, 'update']);
+    Route::patch('/management', [ShopController::class, 'update']);
 });
 
 Route::group(['middleware'=>['auth', 'can:admin-only']], function(){

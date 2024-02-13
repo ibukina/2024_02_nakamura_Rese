@@ -16,8 +16,18 @@
         @if(!empty($reservations))
         <div class="reservation-range">
             @foreach($reservations as $reservation)
+            @if(!in_array($reservation->id, $reviewedReservationIds))
             <div class="reservation-information">
                 <div class="reservation-information_title">
+                    @if($now->greaterThan(date('Y-m-d H:i:s', strtotime($reservation->date . $reservation->time))))
+                    <div class="reservation-update">
+                        <div class="update-form">
+                            <button class="update-button">
+                                <span class="update-button_image"></span>
+                            </button>
+                        </div>
+                    </div>
+                    @else
                     <div class="reservation-update">
                         <form class="update-form" action="/reservation/{{ $reservation->id }}" method="get">
                             @csrf
@@ -26,6 +36,7 @@
                             </button>
                         </form>
                     </div>
+                    @endif
                     <div class="reservation-number">予約{{ $loop->iteration }}</div>
                     @if($now->greaterThan(date('Y-m-d H:i:s', strtotime($reservation->date . $reservation->time))))
                     <div class="reservation-review">
@@ -68,6 +79,7 @@
                     </tr>
                 </table>
             </div>
+            @endif
             @endforeach
         </div>
         @else
