@@ -23,3 +23,27 @@ document.querySelector("input[name='number']").addEventListener("change", (event
     console.log(numberValue);
     document.querySelector(".table-data_number").textContent = numberValue;
 });
+
+document.querySelector("input[name='name']").addEventListener("change", (event) => {
+    let nameValue = event.target.value;
+    console.log(nameValue);
+    document.querySelector(".table-data_name").textContent = nameValue;
+});
+
+document.querySelector("input[name='summary']").addEventListener("change", (event) => {
+    let summaryValue = event.target.value;
+    console.log(summaryValue);
+    document.querySelector(".table-data_summary").textContent = summaryValue;
+});
+
+document.querySelector("input[name='area']").addEventListener("change", (event) => {
+    let areaValue = event.target.value;
+    console.log(areaValue);
+    document.querySelector(".table-data_area").textContent = areaValue;
+});
+
+document.querySelector("input[name='genre']").addEventListener("change", (event) => {
+    let genreValue = event.target.value;
+    console.log(genreValue);
+    document.querySelector(".table-data_genre").textContent = genreValue;
+});

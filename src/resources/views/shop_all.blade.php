@@ -6,6 +6,11 @@
 
 @section('header_content')
 <div class="content-search">
+    @can('admin-only')
+    <div class="management-link_wrapper">
+        <a class="management-link" href="/admin">追加画面へ</a>
+    </div>
+    @endcan
     @can('manager-only')
     <div class="management-link_wrapper">
         <a class="management-link" href="/management">管理画面へ</a>
@@ -17,19 +22,17 @@
             <div class="select-wrapper">
                 <select class="search-form_item-select" name="area" id="area">
                     <option value="">All area</option>
-                    <option value="東京都">東京都</option>
-                    <option value="大阪府">大阪府</option>
-                    <option value="福岡県">福岡県</option>
+                    @foreach($areas as $area)
+                    <option value="{{ $area->id }}">{{ $area->area }}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="select-wrapper">
                 <select class="search-form_item-select" name="genre" id="genre">
                     <option value="">All genre</option>
-                    <option value="寿司">寿司</option>
-                    <option value="焼肉">焼肉</option>
-                    <option value="ラーメン">ラーメン</option>
-                    <option value="居酒屋">居酒屋</option>
-                    <option value="イタリアン">イタリアン</option>
+                    @foreach($genres as $genre)
+                    <option value="{{ $genre->id }}">{{ $genre->genre }}</option>
+                    @endforeach
                 </select>
             </div>
             <button class="search-form_item-button"></button>
@@ -46,13 +49,13 @@
         @foreach($shops as $shop)
         <div class="shop-container">
             <div class="shop-image">
-                <img class="shop-image_item" src="{{ $shop->image }}" alt="画像">
+                <img class="shop-image_item" src="{{ $shop->image->image }}" alt="画像">
             </div>
             <div class="detail-wrapper">
                 <div class="shop-name">{{ $shop->name }}</div>
                 <div class="shop-tag_wrapper">
-                    <div class="shop-tag_area">#{{ $shop->area }}</div>
-                    <div class="shop-tag_genre">#{{ $shop->genre }}</div>
+                    <div class="shop-tag_area">#{{ $shop->area->area }}</div>
+                    <div class="shop-tag_genre">#{{ $shop->genre->genre }}</div>
                 </div>
                 <div class="detail-mark_wrapper">
                     <div class="detail-button_wrapper">

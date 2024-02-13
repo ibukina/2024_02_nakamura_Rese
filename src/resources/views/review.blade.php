@@ -24,7 +24,7 @@
                 </select>
             </label>
             <label class="form-item">
-                <textarea class="form-item_text" name="comment">コメント</textarea>
+                <textarea class="form-item_text" name="comment"></textarea>
             </label>
             @if (count($errors) > 0)
         <div class="error-wrapper">

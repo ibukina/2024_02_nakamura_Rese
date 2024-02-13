@@ -9,6 +9,18 @@ class Shop extends Model
 {
     use HasFactory;
 
+    public function image(){
+        return $this->belongsTo('App\Models\Image');
+    }
+
+    public function area(){
+        return $this->belongsTo('App\Models\Area');
+    }
+
+    public function genre(){
+        return $this->belongsTo('App\Models\Genre');
+    }
+
     public function reservations(){
         return $this->hasMany('App\Models\Reservation');
     }
@@ -32,13 +44,13 @@ class Shop extends Model
 
     public function scopeAreaSearch($query, $area){
         if(!empty($area)){
-            $query->where('area', $area);
+            $query->where('area_id', $area);
         }
     }
 
     public function scopeGenreSearch($query, $genre){
         if(!empty($genre)){
-            $query->where('genre', $genre);
+            $query->where('genre_id', $genre);
         }
     }
 
