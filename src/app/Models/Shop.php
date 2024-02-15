@@ -35,11 +35,11 @@ class Shop extends Model
 
     protected $fillable = [
         'id',
-        'image',
+        'image_id',
+        'area_id',
+        'genre_id',
         'name',
         'summary',
-        'area',
-        'genre',
     ];
 
     public function scopeAreaSearch($query, $area){

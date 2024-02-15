@@ -2,10 +2,10 @@
     margin: 0 50px;
 }
 
-.store-form{
+.select-store-form, .shop-store-form{
     width: 85%;
     padding: 10px;
-    margin: 0 auto;
+    margin: 0 auto 30px;
     border-radius: 4px;
     background-color: #3560F6;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
@@ -23,10 +23,15 @@
 }
 
 .form-item{
+    margin: 5px 5px 0 0;
     height: 25px;
-    width: 32%;
+    width: 25%;
     border: none;
     border-radius: 3px;
+}
+
+.form-item_image{
+    width: 50%;
 }
 
 .store-button{
@@ -39,38 +44,37 @@
     color: white;
 }
 
-.list-wrapper{
-    margin-top: 25px;
+.store-form-item_wrapper{
+    display: flex;
+    flex-direction: column;
+    margin: 7px 0;
 }
 
-.list-table_wrapper{
-    width: 85%;
-    text-align: center;
-    margin: 0 auto;
-    padding: 10px;
-    border-radius: 4px;
-    background-color: white;
+select {
+    appearance: none;
 }
 
-.list-title {
-    font-size: 20px;
+select::-ms-expand {
+    display: none;
 }
 
-.list-table{
-    width: 75%;
-    margin: 15px auto;
-}
-
-.table-row{
-    border-bottom: 1px solid #3560F6;
-}
-
-.table-header{
-    height: 30px;
-}
-
-.table-data{
+.form-item_select{
+    width: 32%;
     height: 25px;
+    padding: 2px;
+    border: none;
+    border-radius: 3px;
+    background-image: url(../img/bottom-arrow.png);
+    background-position: right 3px center;
+    background-repeat: no-repeat;
+    background-size: 13px 10px;
+}
+
+.form-item_text{
+    width: 100%;
+    height: 50px;
+    margin: 5px 5px 0 0;
+    padding: 5px;
 }
 
 .shop-review_wrapper{
@@ -78,5 +82,61 @@
 }
 
 .review-title{
+    font-size: 22px;
+    font-weight: bold;
+    color: #003FF5;
+}
+
+.review-wrapper{
+    margin-top: 10px;
+    padding: 10px 25px;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+}
+
+.review-item{
     font-size: 20px;
+}
+
+.review-table{
+    margin-bottom: 10px;
+}
+
+.table-data{
+    border-bottom: 1px solid black;
+}
+
+.error-wrapper {
+    margin: 0 0 20px 20px;
+}
+
+.error-has {
+    margin: 0 0 5px;
+    font-size: 15px;
+}
+
+.error-message {
+    font-size: 12px;
+}
+
+.message {
+    margin: auto;
+    font-size: 17px;
+    color: #003FF5;
+}
+
+.alert {
+    font-size: 14px;
+    color: #3560F6;
+}
+
+@media screen and (min-width: 769px) {
+    .form-item {
+        width: 32%;
+    }
+
+    .form-item_image {
+        width: 32%;
+    }
 }

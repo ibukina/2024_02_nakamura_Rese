@@ -40,5 +40,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('user-higher', function ($user) {
             return ($user->role->id <= 3);
         });
+        // 店舗管理者以外許可
+        Gate::define('manager-except', function($user){
+            return ($user->role->id != 2);
+        });
     }
 }
