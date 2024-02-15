@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ShopRequest;
 use App\Models\Image;
 use App\Models\Area;
 use App\Models\Genre;
@@ -43,14 +44,18 @@ class ShopController extends Controller
         return view ('shop_detail', compact('images', 'areas', 'genres', 'detail'));
     }
 
-    public function update(Request $request){
+    public function update(ShopRequest $request){
         $shops=[
-            'image_id'=>$request->image,
-            'area_id'=>$request->area,
-            'genre_id'=>$request->genre,
+            'image_id'=>$request->image_id,
+            'area_id'=>$request->area_id,
+            'genre_id'=>$request->genre_id,
             'name'=>$request->name,
             'summary'=>$request->summary,
         ];
         Shop::find($request->shop_id)->update($shops);
+        $areas=Area::all();
+        $genres=Genre::all();
+        $shops=Shop::all();
+        return view ('shop_all', compact('areas', 'genres', 'shops'));
     }
 }

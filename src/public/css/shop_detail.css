@@ -127,7 +127,7 @@ select::-ms-expand {
 
 .result-wrapper{
     width: 90%;
-    margin: 10px 0;
+    margin: 10px 0 40px;
     padding: 10px;
     text-align: left;
     border-radius: 4px;
@@ -159,7 +159,7 @@ select::-ms-expand {
 }
 
 .error-wrapper{
-    margin-left: 20px;
+    margin: 0 0 40px 20px;
 }
 
 .error-has {
@@ -169,4 +169,10 @@ select::-ms-expand {
 
 .error-message {
     font-size: 12px;
+}
+
+.message{
+    margin: auto;
+    font-size: 17px;
+    color: #003FF5;
 }

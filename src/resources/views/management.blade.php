@@ -6,65 +6,100 @@
 
 @section('main_content')
 <div class="content-management">
-    <form class="store-form" action="/management" method="post">
+    @if(session('message'))
+        <div class="alert">
+            {{ session('message') }}
+        </div>
+    @endif
+    @if (count($errors) > 0)
+        <div class="error-wrapper">
+            <div class="error-has">
+            入力内容に問題があります
+            </div>
+            <div class="error-message_wrapper">
+                @foreach ($errors->all() as $error)
+                <li class="error-message">{{$error}}</li>
+                @endforeach
+            </div>
+        </div>
+    @endif
+    <div class="select-store-form">
         @csrf
-        <div class="store-title">エリア等追加フォーム</div>
-        <div class="form-item_wrapper">
-            <input class="form-item" type="text" name="area" placeholder="Area">
-            <input class="form-item" type="text" name="genre" placeholder="Genre">
-            <input class="form-item" type="file" name="image" placeholder="Image">
+        <div class="store-title">カテゴリ追加</div>
+        <form class="form-item_wrapper" action="/management/image"  method="post">
+            @csrf
+            <input class="form-item form-item_image" type="file" name="store_image">
+            <button class="store-button">追加</button>
+        </form>
+        <form class="form-item_wrapper" action="/management/area"  method="post">
+            @csrf
+            <input class="form-item" type="text" name="store_area" placeholder="Area">
+            <button class="store-button">追加</button>
+        </form>
+        <form class="form-item_wrapper" action="/management/genre"  method="post">
+            @csrf
+            <input class="form-item" type="text" name="store_genre" placeholder="Genre">
+            <button class="store-button">追加</button>
+        </form>
+</div>
+    <form class="shop-store-form" action="/management/shop" method="post">
+        @csrf
+        <div class="store-title">新店舗追加</div>
+        <div class="store-form-item_wrapper">
+            <div class="form-select_wrapper">
+                <select class="form-item_select" name="image_id" id="image">
+                    <option value="">All Image</option>
+                    @foreach($images as $image)
+                    <option value="{{ $image->id }}">{{ $image->image }}</option>
+                    @endforeach
+                </select>
+                <select class="form-item_select" name="area_id" id="area">
+                    <option value="">All Area</option>
+                    @foreach($areas as $area)
+                    <option value="{{ $area->id }}">{{ $area->area }}</option>
+                    @endforeach
+                </select>
+                <select class="form-item_select" name="genre_id" id="genre">
+                    <option value="">All Genre</option>
+                    @foreach($genres as $genre)
+                    <option value="{{ $genre->id }}">{{ $genre->genre }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <input class="form-item" type="text" name="name" placeholder="ShopName">
+            <textarea class="form-item_text" name="summary">Summary{{ old('description') }}</textarea>
         </div>
         <button class="store-button">追加</button>
     </form>
-    <div class="list-wrapper">
-        <div class="list-table_wrapper">
-            <div class="list-title">種類一覧</div>
-            <table class="list-table">
-                <tr class="table-row">
-                    <th class="table-header">Area</th>
-                </tr>
-                @if($areas)
-                @foreach($areas as $area)
-                <tr class="table-row">
-                    <td class="table-data">{{ $area->area }}</td>
-                </tr>
-                @endforeach
-                @endif
-            </table>
-            <table class="list-table">
-                <tr class="table-row">
-                    <th class="table-header">Genre</th>
-                </tr>
-                @if($genres)
-                @foreach($genres as $genre)
-                <tr class="table-row">
-                    <td class="table-data">{{ $genre->genre }}</td>
-                </tr>
-                @endforeach
-                @endif
-            </table>
-            <table class="list-table">
-                <tr class="table-row">
-                    <th class="table-header">Image</th>
-                </tr>
-                @if($images)
-                @foreach($images as $image)
-                <tr class="table-row">
-                    <td class="table-data">{{ $image->image }}</td>
-                </tr>
-                @endforeach
-                @endif
-            </table>
-        </div>
-    </div>
     <div class="shop-review_wrapper">
         <div class="review-title">Review</div>
         @if($reviews)
         @foreach($reviews as $review)
         <div class="review-wrapper">
-            <div class="shop-name">{{ $review->shop->name }}</div>
-            <div class="score-average">{{ $review->score }}</div>
-            <div class="review-opinion">{{ $review->comment }}</div>
+            <table class="review-table">
+                <tr class="table-row">
+                    <th class="table-header">Shop Name</th>
+                </tr>
+                <tr class="table-row">
+                    <td class="table-data">{{ $review->shop->name }}</td>
+                </tr>
+            </table>
+            <table class="review-table">
+                <tr class="table-row">
+                    <th class="table-header">Review Score Average</th>
+                </tr>
+                <tr class="table-row">
+                    <td class="table-data">{{ $review->score }}</td>
+                </tr>
+            </table>
+            <table class="review-table">
+                <tr class="table-row">
+                    <th class="table-header">User Comment</th>
+                </tr>
+                <tr class="table-row">
+                    <td class="table-data">{{ $review->comment }}</td>
+                </tr>
+            </table>
         </div>
         @endforeach
         @endif

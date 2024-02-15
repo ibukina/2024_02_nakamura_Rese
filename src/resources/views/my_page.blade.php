@@ -98,13 +98,13 @@
             @foreach($favorites as $favorite)
             <div class="shop-container">
                 <div class="shop-image">
-                    <img class="shop-image_item" src="{{ $favorite->shop->image }}" alt="画像">
+                    <img class="shop-image_item" src="{{ $favorite->shop->image->image }}" alt="画像">
                 </div>
                 <div class="detail-wrapper">
                     <div class="shop-name">{{ $favorite->shop->name }}</div>
                     <div class="shop-tag_wrapper">
-                        <div class="shop-tag_area">#{{ $favorite->shop->area }}</div>
-                        <div class="shop-tag_genre">#{{ $favorite->shop->genre }}</div>
+                        <div class="shop-tag_area">#{{ $favorite->shop->area->area }}</div>
+                        <div class="shop-tag_genre">#{{ $favorite->shop->genre->genre }}</div>
                     </div>
                     <div class="detail-mark_wrapper">
                         <div class="detail-button_wrapper">

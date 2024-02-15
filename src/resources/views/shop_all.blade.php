@@ -64,6 +64,7 @@
                             <button class="detail-button">詳しくみる</button>
                         </form>
                     </div>
+                    @can('user-only')
                     @if(Auth::check() && !empty($favorites))
                     @if(isset($favorites[$shop->id]))
                     <form class="favorite-form" action="/favorite" method="post">
@@ -84,6 +85,7 @@
                     </form>
                     @endif
                     @endif
+                    @endcan
                 </div>
             </div>
         </div>
