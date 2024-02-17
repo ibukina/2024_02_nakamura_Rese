@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ShopRequest;
 use App\Http\Requests\ImageRequest;
 use App\Http\Requests\AreaRequest;
@@ -20,27 +21,30 @@ class ManagementController extends Controller
         $areas=Area::all();
         $genres=Genre::all();
         $reviews=Review::all();
-        return view('management', compact('images', 'areas', 'genres', 'reviews'));
+        $shops=Shop::with('reviews')->has('reviews')->get();
+        return view('management', compact('images', 'areas', 'genres', 'reviews', 'shops'));
     }
 
     public function imageStore(ImageRequest $request){
-        $image=['image'=>$request->store_image];
+        $image_file=$request->file('store_image');
+        $filename=$image_file->getClientOriginalName();
+        $image_path=$image_file->storeAs('public/image', $filename);
+        //画像を保存するパスは"public/image/xxx.jpeg"
+        $read_path = str_replace('public/', 'storage/', $image_path);
+        // 画像のパスをデータベースに保存
+        $image=Image::create(['image'=>$read_path]);
         return redirect('/management')->with('message', '画像を追加しました');
     }
 
     public function areaStore(AreaRequest $request){
         $area=['area'=>$request->store_area];
-        if($area){
-            Area::create($area);
-        }
+        Area::create($area);
         return redirect('/management')->with('message', 'エリアを追加しました');
     }
 
     public function genreStore(GenreRequest $request){
         $genre=['genre'=>$request->store_genre];
-        if($genre){
-            Genre::create($genre);
-        }
+        Genre::create($genre);
         return redirect('/management')->with('message', 'ジャンルを追加しました');
     }
 

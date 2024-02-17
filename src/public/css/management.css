@@ -101,10 +101,28 @@ select::-ms-expand {
 
 .review-table{
     margin-bottom: 10px;
+    text-align: left;
+}
+
+.table-row{
+    display: flex;
+    flex-direction: column;
+}
+
+.table-header{
+    color: #003FF5;
 }
 
 .table-data{
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #3560F6;
+}
+
+.hidden{
+    display: none;
+}
+
+.show-more{
+    color: #003FF5;
 }
 
 .error-wrapper {

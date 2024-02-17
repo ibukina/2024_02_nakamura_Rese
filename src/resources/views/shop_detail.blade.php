@@ -64,12 +64,8 @@
             <div class="result-wrapper result-wrapper_update">
                 <table class="result-table">
                     <tr class="table-row">
-                        <th class="table-header">Name</th>
-                        <td class="table-data table-data_name">{{ $detail->name }}</td>
-                    </tr>
-                    <tr class="table-row">
-                        <th class="table-header">Summary</th>
-                        <td class="table-data table-data_summary">{{ $detail->summary }}</td>
+                        <th class="table-header">Image</th>
+                        <td class="table-data table-data_image">{{ $detail->image->image }}</td>
                     </tr>
                     <tr class="table-row">
                         <th class="table-header">Area</th>
@@ -78,6 +74,14 @@
                     <tr class="table-row">
                         <th class="table-header">Genre</th>
                         <td class="table-data table-data_genre">{{ $detail->genre->genre }}</td>
+                    </tr>
+                    <tr class="table-row">
+                        <th class="table-header">Name</th>
+                        <td class="table-data table-data_name">{{ $detail->name }}</td>
+                    </tr>
+                    <tr class="table-row">
+                        <th class="table-header">Summary</th>
+                        <td class="table-data table-data_summary">{{ $detail->summary }}</td>
                     </tr>
                 </table>
             </div>
@@ -151,5 +155,6 @@
     <div class="message">予約するにはログインが必要です</div>
     @endif
 </div>
-<script src="{{ asset('js/form.js') }}" defer></script>
+<script src="{{ asset('js/reservation_result.js') }}" defer></script>
+<script src="{{ asset('js/update_result.js') }}" defer></script>
 @endsection

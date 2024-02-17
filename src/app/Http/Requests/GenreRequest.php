@@ -24,7 +24,7 @@ class GenreRequest extends FormRequest
     public function rules()
     {
         return [
-            'store_genre'=>['required', 'string',],
+            'store_genre'=>['required', 'string', 'max:191'],
         ];
     }
 
@@ -32,6 +32,7 @@ class GenreRequest extends FormRequest
         return[
             'store_genre.required'=>'ジャンルを入力してください',
             'store_genre.string'=>'ジャンルを文字列で入力してください',
+            'store_genre.max'=>'ジャンルを191文字以下で入力してください',
         ];
     }
 }

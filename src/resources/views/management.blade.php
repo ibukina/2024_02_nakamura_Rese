@@ -26,7 +26,7 @@
     <div class="select-store-form">
         @csrf
         <div class="store-title">カテゴリ追加</div>
-        <form class="form-item_wrapper" action="/management/image"  method="post">
+        <form class="form-item_wrapper" enctype="multipart/form-data" action="/management/image"  method="post">
             @csrf
             <input class="form-item form-item_image" type="file" name="store_image">
             <button class="store-button">追加</button>
@@ -73,15 +73,15 @@
     </form>
     <div class="shop-review_wrapper">
         <div class="review-title">Review</div>
-        @if($reviews)
-        @foreach($reviews as $review)
+        @if($shops)
+        @foreach($shops as $shop)
         <div class="review-wrapper">
             <table class="review-table">
                 <tr class="table-row">
                     <th class="table-header">Shop Name</th>
                 </tr>
                 <tr class="table-row">
-                    <td class="table-data">{{ $review->shop->name }}</td>
+                    <td class="table-data">{{ $shop->name }}</td>
                 </tr>
             </table>
             <table class="review-table">
@@ -89,7 +89,10 @@
                     <th class="table-header">Review Score Average</th>
                 </tr>
                 <tr class="table-row">
-                    <td class="table-data">{{ $review->score }}</td>
+                    @php
+                    $averageScore=$shop->reviews->avg('score');
+                    @endphp
+                    <td class="table-data">{{ $averageScore }}</td>
                 </tr>
             </table>
             <table class="review-table">
@@ -97,7 +100,19 @@
                     <th class="table-header">User Comment</th>
                 </tr>
                 <tr class="table-row">
+                    @php
+                    $displayLimit=3;
+                    @endphp
+                    @foreach($shop->reviews as $index=>$review)
+                    @if($index < $displayLimit)
                     <td class="table-data">{{ $review->comment }}</td>
+                    @else
+                    <td class="table-data hidden">{{ $review->comment }}</td>
+                    @endif
+                    @endforeach
+                    @if(count($shop->reviews) > $displayLimit)
+                    <td class="table-data show-more">...</td>
+                    @endif
                 </tr>
             </table>
         </div>
@@ -105,4 +120,5 @@
         @endif
     </div>
 </div>
+<script src="{{ asset('js/hidden-comment.js') }}" defer></script>
 @endsection
