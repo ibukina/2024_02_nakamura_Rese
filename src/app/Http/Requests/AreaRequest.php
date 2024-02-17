@@ -24,7 +24,7 @@ class AreaRequest extends FormRequest
     public function rules()
     {
         return [
-            'store_area'=>['required', 'string',],
+            'store_area'=>['required', 'string', 'max:191'],
         ];
     }
 
@@ -32,6 +32,7 @@ class AreaRequest extends FormRequest
         return[
             'store_area.required'=>'エリアを入力してください',
             'store_area.string'=>'エリアを文字列で入力してください',
+            'store_area.max'=>'エリアを最大191文字以下で入力してください',
         ];
     }
 }

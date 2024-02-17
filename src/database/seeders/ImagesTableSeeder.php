@@ -18,23 +18,23 @@ class ImagesTableSeeder extends Seeder
         $images=[
             [
                 'id'=>'1',
-                'image'=>'img/sushi.jpg',
+                'image'=>'storage/image/sushi.jpg',
             ],
             [
                 'id'=>'2',
-                'image'=>'img/yakiniku.jpg',
+                'image'=>'storage/image/yakiniku.jpg',
             ],
             [
                 'id'=>'3',
-                'image'=>'img/ramen.jpg',
+                'image'=>'storage/image/ramen.jpg',
             ],
             [
                 'id'=>'4',
-                'image'=>'img/izakaya.jpg',
+                'image'=>'storage/image/izakaya.jpg',
             ],
             [
                 'id'=>'5',
-                'image'=>'img/italian.jpg',
+                'image'=>'storage/image/italian.jpg',
             ],
         ];
         DB::table('images')->insert($images);
