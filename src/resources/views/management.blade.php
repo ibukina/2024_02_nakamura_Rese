@@ -86,18 +86,21 @@
             </table>
             <table class="review-table">
                 <tr class="table-row">
-                    <th class="table-header">Reservation Calender</th>
+                    <th class="table-header">Reservation</th>
                 </tr>
+                @foreach($reservations as $reservation)
                 <tr class="table-row">
+                    @if($reservation->shop_id == $shop->id)
                     <td class="table-data">
-                        @yield('calendar')
+                        {{ $reservation->date . ' / ' . $reservation->time . ' / ' . $reservation->number . '人' }}
                     </td>
+                    @endif
                 </tr>
+                @endforeach
             </table>
         </div>
         @endforeach
         @endif
     </div>
 </div>
-<script src="{{ asset('js/hidden-comment.js') }}" defer></script>
 @endsection
