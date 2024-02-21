@@ -12,7 +12,7 @@ use App\Models\Shop;
 use App\Models\Image;
 use App\Models\Area;
 use App\Models\Genre;
-use App\Models\Review;
+use App\Models\Reservation;
 
 class ManagementController extends Controller
 {
@@ -20,9 +20,9 @@ class ManagementController extends Controller
         $images=Image::all();
         $areas=Area::all();
         $genres=Genre::all();
-        $reviews=Review::all();
-        $shops=Shop::with('reviews')->has('reviews')->get();
-        return view('management', compact('images', 'areas', 'genres', 'reviews', 'shops'));
+        $reservations=Reservation::all();
+        $shops=Shop::with('reservations')->has('reservations')->get();
+        return view('management', compact('images', 'areas', 'genres', 'reservations', 'shops'));
     }
 
     public function imageStore(ImageRequest $request){

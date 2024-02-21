@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Requests\EmailVerificationRequest;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Controllers\UserInformationController;
@@ -27,6 +28,19 @@ Route::get('/detail/{shop_id}', [ShopController::class,'detail']);
 Route::get('/menu', [AuthenticatedSessionController::class, 'menu']);
 Route::get('/register', [RegisteredUserController::class, 'create']);
 Route::post('/register', [RegisteredUserController::class, 'store']);
+
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+Route::post('/email/verification-notification', function (EmailVerificationRequest $request){
+    $request->user()->sendEmailVerificationNotification();
+    return back()->with('status', 'verification-link-sent');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect('/thanks');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
 Route::get('/thanks', [RegisteredUserController::class, 'thanks']);
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
@@ -36,7 +50,7 @@ Route::group(['middleware'=>['auth', 'can:user-higher']], function (){
 });
 
 Route::group(['middleware'=>['auth', 'can:user-only']], function(){
-    Route::get('/mypage', [UserInformationController::class, 'create']);
+    Route::get('/mypage', [UserInformationController::class, 'create'])->middleware('verified');
     Route::post('/favorite', [UserInformationController::class, 'store']);
     Route::delete('/favorite', [UserInformationController::class, 'destroy']);
     Route::post('/reservation', [ReservationController::class, 'store']);
