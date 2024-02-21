@@ -42,6 +42,7 @@ return [
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
+            'verify_peer' => false,
             'local_domain' => env('MAIL_EHLO_DOMAIN'),
         ],
 
@@ -65,6 +66,7 @@ return [
         'log' => [
             'transport' => 'log',
             'channel' => env('MAIL_LOG_CHANNEL'),
+            'log_channel' => 'stack',
         ],
 
         'array' => [

@@ -72,7 +72,7 @@
         <button class="store-button">追加</button>
     </form>
     <div class="shop-review_wrapper">
-        <div class="review-title">Review</div>
+        <div class="review-title">Reservation</div>
         @if($shops)
         @foreach($shops as $shop)
         <div class="review-wrapper">
@@ -86,33 +86,12 @@
             </table>
             <table class="review-table">
                 <tr class="table-row">
-                    <th class="table-header">Review Score Average</th>
+                    <th class="table-header">Reservation Calender</th>
                 </tr>
                 <tr class="table-row">
-                    @php
-                    $averageScore=$shop->reviews->avg('score');
-                    @endphp
-                    <td class="table-data">{{ $averageScore }}</td>
-                </tr>
-            </table>
-            <table class="review-table">
-                <tr class="table-row">
-                    <th class="table-header">User Comment</th>
-                </tr>
-                <tr class="table-row">
-                    @php
-                    $displayLimit=3;
-                    @endphp
-                    @foreach($shop->reviews as $index=>$review)
-                    @if($index < $displayLimit)
-                    <td class="table-data">{{ $review->comment }}</td>
-                    @else
-                    <td class="table-data hidden">{{ $review->comment }}</td>
-                    @endif
-                    @endforeach
-                    @if(count($shop->reviews) > $displayLimit)
-                    <td class="table-data show-more">...</td>
-                    @endif
+                    <td class="table-data">
+                        @yield('calendar')
+                    </td>
                 </tr>
             </table>
         </div>

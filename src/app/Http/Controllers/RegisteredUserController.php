@@ -14,13 +14,14 @@ class RegisteredUserController extends Controller
     }
 
     public function store(RegisterRequest $request){
-        User::create([
+        $user=User::create([
             'role_id'=>$request['role_id'],
             'username' => $request['username'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
-        return redirect('/thanks');
+        $user->sendEmailVerificationNotification();
+        return redirect('/email/verify');
     }
 
     public function thanks(){
