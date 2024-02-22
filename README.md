@@ -68,40 +68,44 @@
 
 ## アプリケーション URL
 
-ホーム画面(店舗一覧)
-http://localhost/
-店舗詳細画面
-http://localhost/detail/{shop_id}
-メニュー画面
-http://localhost/menu
-新規登録画面
-http://localhost/register
-登録完了画面
-http://localhost/thanks
-ログイン画面
-http://localhost/login
-↑ これらは登録・ログインなしで見られます。<br>
+- ホーム画面(店舗一覧)
+  http://localhost/
+- 店舗詳細画面
+  http://localhost/detail/{shop_id}
+- メニュー画面
+  http://localhost/menu
+- 新規登録画面
+  http://localhost/register
+- 登録完了画面
+  http://localhost/thanks
+- ログイン画面
+  http://localhost/login
+  <br>
+  ↑ これらは登録・ログインなしで見られます。<br>
 
-マイページ画面
-http://localhost/mypage
-予約完了画面
-http://localhost/done
-予約変更画面
-http://localhost/reservation/{reservation_id}
-評価画面
-http://localhost/review/{reservation_id}
-↑ これらは一般ユーザーのみアクセスできます。<br>
+- マイページ画面  
+  http://localhost/mypage
+- 予約完了画面  
+  http://localhost/done
+- 予約変更画面  
+  http://localhost/reservation/{reservation_id}
+- 評価画面  
+  http://localhost/review/{reservation_id}
+  <br>
+  ↑ これらは一般ユーザーのみアクセスできます。<br>
 
-店舗管理画面
-http://localhost/management
-↑ これは店舗代表者のみアクセスできます。また店舗情報変更時は店舗代表者としてログインした後店舗詳細画面にアクセスしてください。<br>
+- 店舗管理画面  
+  http://localhost/management
+  <br>
+  ↑ これは店舗代表者のみアクセスできます。また店舗情報変更時は店舗代表者としてログインした後店舗詳細画面にアクセスしてください。<br>
 
-店舗代表者追加画面
-http://localhost/admin
-↑ これは管理者のみアクセスできます。<br>
+- 店舗代表者追加画面  
+  http://localhost/admin
+  <br>
+  ↑ これは管理者のみアクセスできます。<br>
 
-新規登録・ログイン・ログアウト・ホームページ・マイページは、ホーム画面左上にあるアイコンを押していただくとメニュー画面から遷移できます。
-ログインに必要な情報は新規登録画面から追加するか、アカウントの種類の欄を利用してください。
+新規登録・ログイン・ログアウト・ホームページ・マイページは、ホーム画面左上にあるアイコンを押していただくとメニュー画面から遷移できます。  
+ログインに必要な情報は新規登録画面から追加するか、アカウントの種類の欄を利用してください。  
 新規登録する際はログイン後メール認証が行われますので、メールサーバーの設定をお願いします。
 
 ## 機能一覧
@@ -166,7 +170,7 @@ http://localhost/admin
 
 ## ER 図
 
-![usecase drawio](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/aad528c9-857d-4f50-a742-2d1ef26e70bf)
+![rese drawio](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/5ba372f1-f915-4b2b-a869-ae749931cdb0)
 
 ## 環境構築
 
