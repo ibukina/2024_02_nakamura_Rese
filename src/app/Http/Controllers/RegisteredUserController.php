@@ -20,8 +20,7 @@ class RegisteredUserController extends Controller
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
-        $user->sendEmailVerificationNotification();
-        return redirect('/email/verify');
+        return redirect('/thanks');
     }
 
     public function thanks(){

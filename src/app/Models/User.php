@@ -15,7 +15,6 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sendEmailVerificationNotification()
     {
         $this->notify(new \App\Notifications\VerifyEmail);
-        dd('Verification email sent');
     }
 
     public function role(){

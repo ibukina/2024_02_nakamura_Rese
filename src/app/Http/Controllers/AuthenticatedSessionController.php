@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use App\Models\User;
 use App\Http\Requests\LoginRequest;
 
 class AuthenticatedSessionController extends Controller
@@ -25,6 +26,10 @@ class AuthenticatedSessionController extends Controller
         $credentials=$request->only('email', 'password');
         if(Auth::attempt($credentials)){
             $user=Auth::user();
+            if(!$user->hasVerifiedEmail()){
+                $user->sendEmailVerificationNotification();
+                return redirect('/email/verify');
+            }
             if(Gate::allows('user-only', $user)){
                 return redirect('/mypage');
             }
