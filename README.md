@@ -44,13 +44,31 @@
 
 #### 予約した店舗の評価
 
+![rese_review](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/b6bc3b27-f98e-4b5a-b21f-2b9eb9f26141)
+
+#### 店舗管理
+
+![rese_management](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/64759b17-5305-45b8-9dc9-fcf3cf584c33)
+
+#### 店舗情報変更
+
+![rese_detail_update](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/b286e596-38b1-42e3-ae8c-c53fc223fe8b)
+
+#### 店舗管理者追加
+
+![rese_admin](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/821d275a-326c-4fb4-930f-fa4b97f73ea4)
+
+> [!IMPORTANT]
+> このアプリは docker , VSCode の使用を前提としています。
+> また開発環境は Windows ですので、MacOS 等他機種では動作が異なる可能性があります。ご了承ください。
+
 ## 作成した目的
 
-外部の飲食店予約サービスは手数料を取られるので自社で予約サービスを持つことを考え、また競合他社のサービスは機能や画面が複雑で使いずらいため、差別化としてシンプルで使いやすいものを作成しました。
+外部の飲食店予約サービスは手数料を取られるので自社で予約サービスを持つことを考え、また競合他社のサービスは機能や画面が複雑で使いづらいため、差別化としてシンプルで使いやすいものを作成しました。
 
 ## アプリケーション URL
 
-ホーム画面
+ホーム画面(店舗一覧)
 http://localhost/
 
 ログイン画面へは、ホーム画面左上にあるアイコンを押していただきメニュー画面へ遷移後、Login を押してください。
@@ -58,12 +76,222 @@ http://localhost/
 
 ## 機能一覧
 
+- 会員登録
+- ログイン
+- ログアウト
+- ユーザー情報取得
+- ユーザー飲食店お気に入り一覧取得
+- ユーザー飲食店予約情報取得
+- 飲食店一覧取得
+- 飲食店詳細取得
+- 飲食店お気に入り追加
+- 飲食店お気に入り削除
+- 飲食店予約情報追加
+- 飲食店予約情報変更
+- 飲食店予約情報削除
+- エリアで検索する
+- ジャンルで検索する
+- 店名で検索する
+- ユーザー来店後評価
+- 店舗代表者による店舗情報の作成
+- 店舗代表者による店舗情報の更新
+- ユーザー予約情報の確認
+- 管理者による店舗代表者の作成
+
 ## 使用技術(実行環境)
+
+> laravel Framework 9.52.16<br>
+> php 8.0.6<br>
+> mysql 8.0.26<br>
+> nginx 1.22.0<br>
 
 ## テーブル設計
 
 ## ER 図
 
+![usecase drawio](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/aad528c9-857d-4f50-a742-2d1ef26e70bf)
+
 ## 環境構築
 
-## アカウントの種類
+> [!IMPORTANT]
+> これは Windows での構築方法です。
+> 他 OS の場合は異なる場合がございます。<br>
+
+- プロジェクトのクローン<br>
+  まず、コマンドライン上でアプリケーションを導入したいディレクトリまで移動してください。
+  移動出来たら、
+
+```コマンドライン
+git clone <リポジトリのurl>
+```
+
+を実行してください。<br>
+これでプロジェクトのクローンが出来ました。<br>
+
+- docker の作成と起動<br>
+  次に、クローンしたプロジェクトのあるディレクトリで、
+
+```コマンドライン
+docker-compose up -d --build
+```
+
+を実行してください。<br>
+これで、docker コンテナの作成と起動が完了しました。<br>  
+docker が起動しているか目に見える形で確認したい方は、docker desktop を導入して確認してみてください。<br>
+
+- laravel の導入<br>
+  プロジェクトのディレクトリで、
+
+```コマンドライン
+docker-compose exec php bash
+```
+
+を実行して、php コンテナにログインしてください。<br>
+ログインが出来たら
+
+```phpコンテナ
+composer install
+```
+
+を実行してください。<br>
+これで laravel はインストール出来ました。<br>
+
+- .env ファイルと APP_KEY の作成<br>
+  laravel の導入時のように、php コンテナにログインしてください。<br>
+  php コンテナ内で
+
+```phpコンテナ
+cp .env.example .env
+```
+
+を実行して、.env ファイルを作成してください。<br>
+作成出来たら、
+
+```phpコンテナ
+exit
+```
+
+で php コンテナからログアウトした後、
+
+```コマンドライン
+code .
+```
+
+を実行して、VSCode でプロジェクトを開きます。<br>
+src 以下に.env ファイルがあるので、そちらの 11 から 16 行目を
+
+```.env:.envファイル
+DB_CONNECTION=mysql
+- DB_HOST=127.0.0.1
++ DB_HOST=mysql
+DB_PORT=3306
+- DB_DATABASE=laravel
+- DB_USERNAME=root
+- DB_PASSWORD=
++ DB_DATABASE=laravel_db
++ DB_USERNAME=laravel_user
++ DB_PASSWORD=laravel_pass
+```
+
+のように変更し、保存してください。 <br>
+php コンテナにログインして、
+
+```phpコンテナ
+php artisan key:generate
+```
+
+を実行して、APP_KEY を作成してください。<br>
+データベースが存在するか確認したい場合は、
+http://localhost:8080/
+にアクセスしてください。<br>
+
+- データベースとテーブルの作成<br>
+  プロジェクトディレクトリで
+
+```コマンドライン
+docker-compose exec mysql bash
+```
+
+を実行して、mysql コンテナに入ってください。<br>
+コンテナに入れたら
+
+```mysqlコンテナ
+mysql -u laravel_user -p
+```
+
+で、コンテナにログインしてください。<br>
+この時、パスワードを求められるので、.env ファイルで変更した DB_PASSWORD の`laravel_pass`を入力してください。<br>
+ログイン出来たら
+
+```mysqlコンテナ
+USE laravel_db;
+```
+
+を実行して、laravel_db を使用するようにしてください。<br>
+確認のため
+
+```mysqlコンテナ
+SELECT DATABASE();
+```
+
+を実行して、laravel_db が選択されていることを確認してください。<br>
+確認出来たら、
+
+```
+exit
+```
+
+で mysql コンテナからログアウトして、プロジェクトディレクトリに戻ってください。<br>
+最後に、laravel の導入時のように php コンテナにログインして
+
+```phpコンテナ
+php artisan migrate
+```
+
+を実行して、マイグレーションテーブルを作成してください。<br>
+php コンテナからのログアウトには`exit`を実行してください。<br>
+
+- メールサーバーの設定<br>
+  .env ファイルと APP_KEY の作成で変更した.env ファイルを変更します。
+  .env ファイルの 32 から 39 行目を、ご利用されるメールサーバーの情報に変更してください。
+
+```.env:.envファイル
+MAIL_MAILER=smtp
+MAIL_HOST=mailpit
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS="hello@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
+これで環境構築は終了です。お疲れ様でした。
+
+## アカウント等ダミーデータの種類
+
+動作確認用のユーザー情報です。<br>
+環境構築後、laravel を導入した php コンテナにて
+
+```phpコンテナ
+php artisan db:seed
+```
+
+を行って頂くと、下記のユーザーが作成されます。
+
+> テストユーザー
+> username:test  
+> email:test@example.com  
+> password:2DDywxxwE3VM@B2
+
+> 店舗代表者
+> username:manager  
+> email:manager@example.com  
+> password:
+
+> 管理者
+> username:admin  
+> email:admin@example.com  
+> password:
+
+`php artisan db:seed`で作成した情報は、`php artisan migrate:fresh`で一括削除できます。
