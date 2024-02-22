@@ -7,7 +7,7 @@
 @section('main_content')
 <div class="content-admin">
     <div class="register-wrapper">
-        <div class="register-form_title">店舗管理者の追加</div>
+        <div class="register-form_title">店舗代表者の追加</div>
         <form class="register-form" action="/register" method="post">
             @csrf
             <input type="hidden" name="role_id" value="2">
