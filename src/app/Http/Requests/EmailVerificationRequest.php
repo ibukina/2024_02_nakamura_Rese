@@ -2,7 +2,12 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Support\Facades\Log;
+use Illuminate\Auth\Events\Verified;
+use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class EmailVerificationRequest extends FormRequest
 {
@@ -13,7 +18,7 @@ class EmailVerificationRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return $this->user() && $this->user() instanceof MustVerifyEmail;
     }
 
     /**
@@ -24,27 +29,30 @@ class EmailVerificationRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|exists:users',
-            'hash' => 'required',
+            'id' => ['required', 'string',
+                Rule::exists('users')->where(function ($query) {
+                    $query->where('id', $this->user()->getKey());
+                }),
+            ],
+            'hash' => ['required', 'string'],
         ];
     }
 
     public function fulfill()
     {
-        $user = User::findOrFail($this->id);
-
-        if (! hash_equals((string) $this->hash, sha1($user->getEmailForVerification()))) {
-            throw new AuthorizationException;
+        Log::info('Fulfill method was called.');
+        if (! hash_equals((string) $this->route('hash'), sha1($this->user()->getEmailForVerification()))) {
+            abort(403);
         }
 
-        if ($user->hasVerifiedEmail()) {
-            return redirect('/login');
+        if ($this->user()->hasVerifiedEmail()) {
+            return redirect('/');
         }
 
-        if ($user->markEmailAsVerified()) {
-            event(new Verified($user));
+        if ($this->user()->markEmailAsVerified()) {
+            event(new Verified($this->user()));
         }
 
-        return redirect('/thanks')->with('verified', true);
+        return redirect('/')->with('verified', true);
     }
 }

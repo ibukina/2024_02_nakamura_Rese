@@ -107,6 +107,33 @@ http://localhost/
 
 ## テーブル設計
 
+- rolesTable
+  ![rese_table_roles](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/53f8ff51-0369-458b-85e2-4723525714cc)
+
+- usersTable
+  ![rese_table_users](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/5140245d-92e7-4891-a690-8cc1d4c05b16)
+
+- imagesTable
+  ![rese_table_images](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/70a40799-7598-4fcb-b3cc-e4fccbe34766)
+
+- areasTable
+  ![rese_table_areas](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/d156c97b-f478-47bb-b9f0-2528b04a2583)
+
+- genresTable
+  ![rese_table_genres](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/9a070389-a18f-477b-9ce4-778a99444486)
+
+- shopsTable
+  ![rese_table_shops](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/48293885-8290-4056-bb89-eafe3e67f43b)
+
+- favoritesTable
+  ![rese_table_favorites](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/e58558c3-3c01-48b3-a249-0c8ba684d240)
+
+- reservationsTable
+  ![rese_table_reservations](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/52310a7b-0c99-46ad-bafc-799b5e1e0ce0)
+
+- reviewsTable
+  ![rese_table_reviews](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/7e9c87f9-dc4d-4110-ae13-dd7bd79664b1)
+
 ## ER 図
 
 ![usecase drawio](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/aad528c9-857d-4f50-a742-2d1ef26e70bf)

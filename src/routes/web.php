@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use App\Http\Requests\EmailVerificationRequest;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\AuthenticatedSessionController;
@@ -36,7 +37,7 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
     $request->fulfill();
     return redirect('/');
 })->middleware(['auth', 'signed'])->name('verification.verify');
-Route::post('/email/verification-notification', function (EmailVerificationRequest $request){
+Route::post('/email/verification-notification', function (Request $request){
     $request->user()->sendEmailVerificationNotification();
     return back()->with('status', 'verification-link-sent');
 })->name('verification.send');
