@@ -70,9 +70,39 @@
 
 ホーム画面(店舗一覧)
 http://localhost/
+店舗詳細画面
+http://localhost/detail/{shop_id}
+メニュー画面
+http://localhost/menu
+新規登録画面
+http://localhost/register
+登録完了画面
+http://localhost/thanks
+ログイン画面
+http://localhost/login
+↑ これらは登録・ログインなしで見られます。<br>
 
-ログイン画面へは、ホーム画面左上にあるアイコンを押していただきメニュー画面へ遷移後、Login を押してください。
+マイページ画面
+http://localhost/mypage
+予約完了画面
+http://localhost/done
+予約変更画面
+http://localhost/reservation/{reservation_id}
+評価画面
+http://localhost/review/{reservation_id}
+↑ これらは一般ユーザーのみアクセスできます。<br>
+
+店舗管理画面
+http://localhost/management
+↑ これは店舗代表者のみアクセスできます。また店舗情報変更時は店舗代表者としてログインした後店舗詳細画面にアクセスしてください。<br>
+
+店舗代表者追加画面
+http://localhost/admin
+↑ これは管理者のみアクセスできます。<br>
+
+新規登録・ログイン・ログアウト・ホームページ・マイページは、ホーム画面左上にあるアイコンを押していただくとメニュー画面から遷移できます。
 ログインに必要な情報は新規登録画面から追加するか、アカウントの種類の欄を利用してください。
+新規登録する際はログイン後メール認証が行われますので、メールサーバーの設定をお願いします。
 
 ## 機能一覧
 
