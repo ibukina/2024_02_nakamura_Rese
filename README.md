@@ -48,7 +48,7 @@
 
 #### 店舗管理
 
-![rese_management](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/64759b17-5305-45b8-9dc9-fcf3cf584c33)
+![rese_management](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/d30927b4-973d-4944-a191-65366cc87c8f)
 
 #### 店舗情報変更
 
@@ -97,7 +97,8 @@
 - 店舗管理画面  
   http://localhost/management
   <br>
-  ↑ これは店舗代表者のみアクセスできます。また店舗情報変更時は店舗代表者としてログインした後店舗詳細画面にアクセスしてください。<br>
+  ↑ これは店舗代表者のみアクセスできます。  
+  店舗情報変更時は店舗代表者としてログインした後店舗詳細画面にアクセスしてください。<br>
 
 - 店舗代表者追加画面  
   http://localhost/admin
