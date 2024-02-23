@@ -48,13 +48,13 @@
 
 #### 店舗管理
 
-![rese_management](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/d30927b4-973d-4944-a191-65366cc87c8f)
+![rese_management](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/64759b17-5305-45b8-9dc9-fcf3cf584c33)
 
 #### 店舗情報変更
 
 ![rese_detail_update](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/b286e596-38b1-42e3-ae8c-c53fc223fe8b)
 
-#### 店舗管理者追加
+#### 店舗代表者追加
 
 ![rese_admin](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/821d275a-326c-4fb4-930f-fa4b97f73ea4)
 
