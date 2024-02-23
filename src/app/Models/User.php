@@ -12,11 +12,6 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    public function sendEmailVerificationNotification()
-    {
-        $this->notify(new \App\Notifications\VerifyEmail);
-    }
-
     public function role(){
         return $this->belongsTo('App\Models\Role');
     }
