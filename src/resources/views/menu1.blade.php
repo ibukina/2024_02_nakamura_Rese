@@ -19,9 +19,11 @@
                     </button>
                 </form>
             </li>
+            @can('user-only')
             <li class="header-list_logged-in_item">
                 <a class="header-list_logged-in_item-link" href="/mypage">Mypage</a>
             </li>
+            @endcan
         </ul>
     </nav>
 </div>

@@ -106,6 +106,7 @@
   ↑ これは管理者のみアクセスできます。<br>
 
 新規登録・ログイン・ログアウト・ホームページ・マイページは、ホーム画面左上にあるアイコンを押していただくとメニュー画面から遷移できます。  
+一般ユーザー以外でログインした場合、マイページ・お気に入り・予約・評価機能は利用できません。  
 ログインに必要な情報は新規登録画面から追加するか、アカウントの種類の欄を利用してください。  
 ユーザーのメール認証後の遷移先は初回のみホーム画面、それ以降はマイページとなっております。
 
@@ -352,11 +353,11 @@ php artisan db:seed
 > 店舗代表者
 > username:manager  
 > email:manager@example.com  
-> password:
+> password:2DDywxxwE3VM@C3
 
 > 管理者
 > username:admin  
 > email:admin@example.com  
-> password:
+> password:2DDywxxwE3VM@B2
 
 `php artisan db:seed`で作成した情報は、`php artisan migrate:fresh`で一括削除できます。
