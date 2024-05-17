@@ -31,13 +31,13 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./docker
-          file: ./docker/php/Dockerfile
+          file: ./php/Dockerfile
           push: false
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Run composer install
-        run: docker run --rm -v $(pwd)/src:/var/www composer install
+        run: docker run --rm -v $(pwd)docker/php/composer.json:/var/www composer install
 
       - name: Push Docker image
         uses: docker/build-push-action@v2
