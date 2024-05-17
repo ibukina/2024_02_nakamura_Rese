@@ -26,4 +26,4 @@ jobs:
     - name: Set APP_KEY
       env:
         APP_KEY: ${{ secrets.APP_KEY }}
-
+      working-directory: ./src
