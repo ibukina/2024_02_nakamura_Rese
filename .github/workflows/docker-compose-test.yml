@@ -17,10 +17,12 @@ jobs:
 
     - name: Build and run with Docker Compose
       run: |
+        docker-compose build
         docker-compose up -d
         docker-compose run php bash -c "cd /var/www && composer install"
       # docker-compose run php php artisan test
       # cd /var/www が成功した場合にのみ composer install を実行 これは成功してる
+      # dockerリポジトリ未使用
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Set APP_KEY
