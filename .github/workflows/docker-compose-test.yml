@@ -21,5 +21,9 @@ jobs:
         docker-compose run php bash -c "cd /var/www && composer install"
         docker-compose run php php artisan test
       # cd /var/www が成功した場合にのみ composer install を実行 これは成功してる
+    - name: Copy .env
+      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       env:
         APP_KEY: ${{ secrets.APP_KEY }}
+      working-directory: ./src
+
