@@ -18,4 +18,4 @@ jobs:
     - name: Build and run with Docker Compose
       run: |
         docker-compose up -d
-        docker-compose run app php artisan test
+        docker-compose run php php artisan test
