@@ -10,6 +10,6 @@ RUN curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer \
     && composer self-update
 
-RUN composer install --working-dir=/var/www
+COPY ../../src /var/www
 
 WORKDIR /var/www
