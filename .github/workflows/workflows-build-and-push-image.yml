@@ -34,7 +34,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Run composer install
-        run: docker run --rm -v $(pwd)src --working-dir=/var/www --no-interaction --prefer-dist --optimize-autoloader composer install
+        run: docker run --rm -v $(pwd)src -w /var/www --no-interaction --prefer-dist --optimize-autoloader composer install
 
       - name: Push Docker image
         uses: docker/build-push-action@v2
