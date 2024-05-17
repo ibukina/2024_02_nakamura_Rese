@@ -30,7 +30,7 @@ jobs:
       with:
         context: .
         push: true
-        tags: your-dockerhub-username/my-image-name:latest
+        tags: ibukkamura/docker-image:latest
 
     - name: Run a one-line script
       run: echo Hello, World!
