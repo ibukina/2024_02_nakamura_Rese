@@ -30,7 +30,7 @@ jobs:
       with:
         context: docker/php
         push: true
-        tags: ibukkamura/docker-image:latest
+        tags: ibukkamura/rese-docker-test:latest
 
     - name: Run a one-line script
       run: echo Hello, World!
