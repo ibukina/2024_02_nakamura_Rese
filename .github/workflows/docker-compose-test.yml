@@ -21,3 +21,5 @@ jobs:
         docker-compose run php bash -c "cd /var/www && composer install"
         docker-compose run php php artisan test
       # cd /var/www が成功した場合にのみ composer install を実行
+      env:
+        APP_KEY: ${{ secrets.APP_KEY }}
