@@ -55,7 +55,7 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
 
     - name: Run Docker container
-      run: docker run -d --name laravel-app --network host -v ${{ github.workspase }}/src:/var/www myapp:latest
+      run: docker run -d --name laravel-app --network host -v ${{ github.workspase }}/src:/var/www ${{ steps.meta.outputs.tags }}
 
     - name: Install Composer dependencies
       run: |
