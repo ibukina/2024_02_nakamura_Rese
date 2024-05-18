@@ -1,0 +1,45 @@
+name: Build and Push image to Docker Hub
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Extract metadata for Docker
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: ibkkamura/rese-docker-test
+
+      - name: Build Docker image
+        uses: docker/setup-buildx-action@v1
+        with:
+          context: ./docker
+          file: ./php/Dockerfile
+          push: false
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Run composer install
+        run: docker run --rm -v $(pwd)docker/php/composer.json:/var/www composer install
+
+      - name: Push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: ./docker/php
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
