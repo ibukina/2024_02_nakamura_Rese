@@ -58,11 +58,9 @@ jobs:
       run: docker run -d --name laravel-app --network host -v ${{ github.workspase }}/src:/var/www ${{ steps.meta.outputs.tags }}
 
     - name: Install Composer dependencies
-      run: |
-        docker exec laravel-app composer install
-        --workind-dir=/var/www
-        --no-interraction --prefer-dist
-        --optimize-autoloader
+      uses: php-actions/composer@v6
+      with:
+        php_version: "8.0.6"
 
     - name: Run migrations
       run: docker exec laravel-app php /var/www/ artisan migrate
