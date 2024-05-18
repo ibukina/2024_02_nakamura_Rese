@@ -60,7 +60,7 @@ jobs:
     - name: Install Composer dependencies
       run: |
         docker exec laravel-app composer install
-        --working-dir=/var/www
+        --working-dir=/var/www/
         --no-interaction --prefer-dist
         --optimize-autoloader
 
