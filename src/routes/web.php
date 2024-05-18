@@ -65,6 +65,7 @@ Route::group(['middleware'=>['auth', 'can:user-only']], function(){
 
 Route::group(['middleware'=>['auth', 'can:manager-only']], function(){
     Route::get('/management', [ManagementController::class, 'create']);
+    Route::post('/management/search', [ManagementController::class, 'search']);
     Route::post('/management/image', [ManagementController::class, 'imageStore']);
     Route::post('/management/area', [ManagementController::class, 'areaStore']);
     Route::post('/management/genre', [ManagementController::class, 'genreStore']);
