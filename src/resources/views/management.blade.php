@@ -71,12 +71,17 @@
         </div>
         <button class="store-button">追加</button>
     </form>
-    <div class="shop-review_wrapper">
-        <div class="review-title">Reservation</div>
+    <div class="shop-reservation_wrapper">
+        <div class="reservation-title">Reservation</div>
+        <form class="reservation-search" action="/management/search" method="post">
+            @csrf
+            <input class="form-item" name="date" type="date">
+            <button class="search-button"></button>
+        </form>
         @if($shops)
         @foreach($shops as $shop)
-        <div class="review-wrapper">
-            <table class="review-table">
+        <div class="reservation-wrapper">
+            <table class="reservation-table">
                 <tr class="table-row">
                     <th class="table-header">Shop Name</th>
                 </tr>

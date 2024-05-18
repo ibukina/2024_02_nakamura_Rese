@@ -25,6 +25,15 @@ class ManagementController extends Controller
         return view('management', compact('images', 'areas', 'genres', 'reservations', 'shops'));
     }
 
+    public function search(Request $request){
+        $images=Image::all();
+        $areas=Area::all();
+        $genres=Genre::all();
+        $reservations=Reservation::DateSearch($request->date)->get();
+        $shops=Shop::with('reservations')->has('reservations')->get();
+        return view('management', compact('images', 'areas', 'genres', 'reservations', 'shops'));
+    }
+
     public function imageStore(ImageRequest $request){
         $image_file=$request->file('store_image');
         $filename=$image_file->getClientOriginalName();

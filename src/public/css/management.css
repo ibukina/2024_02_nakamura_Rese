@@ -77,17 +77,39 @@ select::-ms-expand {
     padding: 5px;
 }
 
-.shop-review_wrapper{
+.reservation-search{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 5px;
+    width: 50%;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+}
+
+.search-button{
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    border: none;
+    background-image: url(../img/search.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: white;
+}
+
+.shop-reservation_wrapper{
     margin-top: 25px;
 }
 
-.review-title{
+.reservation-title{
     font-size: 22px;
     font-weight: bold;
     color: #003FF5;
 }
 
-.review-wrapper{
+.reservation-wrapper{
     margin-top: 10px;
     padding: 10px 25px;
     border-radius: 4px;
@@ -95,11 +117,11 @@ select::-ms-expand {
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
 }
 
-.review-item{
+.reservation-item{
     font-size: 20px;
 }
 
-.review-table{
+.reservation-table{
     margin-bottom: 10px;
     text-align: left;
 }

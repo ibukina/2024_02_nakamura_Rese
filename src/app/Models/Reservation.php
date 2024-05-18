@@ -28,4 +28,10 @@ class Reservation extends Model
         'time',
         'number'
     ];
+
+    public function scopeDateSearch($query, $date){
+        if(!empty($date)){
+            $query->where('date', $date);
+        }
+    }
 }
