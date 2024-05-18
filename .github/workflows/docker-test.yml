@@ -29,7 +29,8 @@ jobs:
           cp .env.example .env
           php artisan key:generate
           exit
-        env: DB_CONNECTION=mysql
+        env: |
+          DB_CONNECTION=mysql
           DB_HOST=mysql
           DB_DATABASE=laravel_db
           DB_USERNAME=laravel_user
