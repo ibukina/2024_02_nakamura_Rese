@@ -23,6 +23,11 @@ jobs:
             exit 1
           fi
 
+      - name: Display directory structure
+        run: |
+          sudo apt-get install tree
+          tree -L 2
+
       - name: Build and Run Docker
         run: docker-compose up -d --build
 
