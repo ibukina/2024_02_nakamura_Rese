@@ -27,6 +27,7 @@ jobs:
         run: |
           sudo apt-get install tree
           tree -L 2
+          tree ./docker/php/
 
       - name: Build and Run Docker
         run: docker-compose up -d --build
