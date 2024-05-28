@@ -14,8 +14,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Build Docker
+      - name: Build and Run Docker
         run: docker-compose up -d --build
+
+      - name: Check composer.json container
+        run: |
+          if test -f "./var/www/composer.json"; then
+            echo "composer.json exists."
+          else
+            echo "composer.json does not exist."
+            exit 1
+          fi
 
       - name: Composer Install
         run: |
@@ -29,12 +38,12 @@ jobs:
           cp .env.example .env
           php artisan key:generate
           exit
-        env: |
-          DB_CONNECTION=mysql
-          DB_HOST=mysql
-          DB_DATABASE=laravel_db
-          DB_USERNAME=laravel_user
-          DB_PASSWORD=laravel_pass
+        env:
+          DB_CONNECTION: mysql
+          DB_HOST: mysql
+          DB_DATABASE: laravel_db
+          DB_USERNAME: laravel_user
+          DB_PASSWORD: laravel_pass
 
       - name: Run migrations
         run: |
