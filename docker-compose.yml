@@ -13,7 +13,7 @@ services:
 
     php:
         build:
-            context: ../..
+            context: ..
             dockerfile: ./docker/php/Dockerfile
 
     mysql:
