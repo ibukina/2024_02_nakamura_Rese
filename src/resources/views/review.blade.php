@@ -6,25 +6,75 @@
 
 @section('main_content')
 <div class="content-review">
+    <div class="shop-detail">
+        <h2 class="review-question">今回のご利用はいかがでしたか？</h2>
+        <div class="shop-container">
+            <div class="shop-image">
+                <img class="shop-image_item" src="{{ $shop->image->image }}" alt="画像">
+            </div>
+            <div class="detail-wrapper">
+                <div class="shop-name">{{ $shop->name }}</div>
+                <div class="shop-tag_wrapper">
+                    <div class="shop-tag_area">#{{ $shop->area->area }}</div>
+                    <div class="shop-tag_genre">#{{ $shop->genre->genre }}</div>
+                </div>
+                <div class="detail-mark_wrapper">
+                    <div class="detail-button_wrapper">
+                        <form class="detail_form" action="/detail/{{$shop->id}}" method="get">
+                            @csrf
+                            <button class="detail-button">詳しくみる</button>
+                        </form>
+                    </div>
+                    @can('user-only')
+                    @if(Auth::check() && !empty($favorites))
+                    @if(isset($favorites[$shop->id]))
+                    <form class="favorite-form" action="/favorite" method="post">
+                        @method('DELETE')
+                        @csrf
+                        <input type="hidden" name="favorite_id" value="{{ $favorites[$shop->id]->id }}">
+                        <button class="favorite-button">
+                            <span class="favorite-mark_image-red"></span>
+                        </button>
+                    </form>
+                    @else
+                    <form class="favorite-form" action="/favorite" method="post">
+                        @csrf
+                        <input type="hidden" name="shop_id" value="{{ $shop->id }}">
+                        <button class="favorite-button">
+                            <span class="favorite-mark_image-gray"></span>
+                        </button>
+                    </form>
+                    @endif
+                    @endif
+                    @endcan
+                </div>
+            </div>
+        </div>
+    </div>
     <form class="review-form" action="/review" method="post">
         @csrf
-        <input type="hidden" name="user_id" value="{{ $review->user_id }}">
-        <input type="hidden" name="shop_id" value="{{ $review->shop_id }}">
-        <input type="hidden" name="reservation_id" value="{{ $review->id }}">
+        <input type="hidden" name="user_id" value="{{ $user_id }}">
+        <input type="hidden" name="shop_id" value="{{ $shop->id }}">
         <div class="review-form_wrapper">
             <div class="review-title">Review</div>
+            <h4 class="form-item_title">体験を評価してください</h4>
             <label class="form-item">
-                <select class="form-item_select" name="score" id="score">
-                    <option value="">5段階で評価してください</option>
-                    <option value="5">星5</option>
-                    <option value="4">星4</option>
-                    <option value="3">星3</option>
-                    <option value="2">星2</option>
-                    <option value="1">星1</option>
-                </select>
+                <span class="form-item_star">☆</span>
+                <span class="form-item_star">☆</span>
+                <span class="form-item_star">☆</span>
+                <span class="form-item_star">☆</span>
+                <span class="form-item_star">☆</span>
+                <input type="hidden" id="score-value" name="score" value="">
             </label>
+            <h4 class="form-item_title">口コミを投稿</h4>
             <label class="form-item">
-                <textarea class="form-item_text" name="comment"></textarea>
+                <textarea class="form-item_text" name="comment" placeholder="カジュアルな夜のお出かけにおすすめのスポット"></textarea>
+            </label>
+            <p class="form-item_text-limit"><span class="limit-number"></span> (最大文字数)</p>
+            <h4 class="form-item_title">画像の追加</h4>
+            <label class="form-item_file">
+                <input class="form-item_input" type="file" name="img_url" placeholder="クリックして写真を追加">
+                <p class="form-item_input-summary">またはドラッグアンドドロップ</p>
             </label>
             @if (count($errors) > 0)
         <div class="error-wrapper">

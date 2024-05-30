@@ -24,7 +24,7 @@ class ImageRequest extends FormRequest
     public function rules()
     {
         return [
-            'store_image'=>['required', 'file', 'image', 'mimes:jpg,jpeg,png',],
+            'store_image'=>['required', 'file', 'image', 'mimes:jpeg,png',],
         ];
     }
 
@@ -33,7 +33,7 @@ class ImageRequest extends FormRequest
             'store_image.required'=>'画像を選択してください',
             'store_image.file'=>'画像のアップロードが出来ていません',
             'store_image.image'=>'画像ファイルを選択してください',
-            'store_image.mimes'=>'画像ファイルはjpg,jpeg,pngの形式のものを選択してください',
+            'store_image.mimes'=>'画像ファイルはjpeg,pngの形式のもののみアップロード可能です',
         ];
     }
 }

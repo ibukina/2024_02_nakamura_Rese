@@ -16,6 +16,19 @@
         <a class="management-link" href="/management">管理画面へ</a>
     </div>
     @endcan
+    @can('user-only')
+    <div class="sort-form_wrapper">
+        <form class="sort-form" action="/sort" method="post">
+            @csrf
+            <select class="sort-form_item" name="sort" onchange="this.form.submit()">
+                <option value="">並び替え：評価高/低</option>
+                <option value="random">ランダム</option>
+                <option value="good-ratings">評価が高い順</option>
+                <option value="bad-ratings">評価は低い順</option>
+            </select>
+        </form>
+    </div>
+    @endcan
     <div class="search-form_wrapper">
         <form class="search-form" action="/search" method="post">
             @csrf
