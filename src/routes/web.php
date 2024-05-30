@@ -50,7 +50,12 @@ Route::group(['middleware'=>['auth', 'can:user-higher']], function (){
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
 });
 
+Route::group(['middleware'=>['auth', 'can:user-or-admin-only']], function (){
+    Route::post('/review/delete/{review_id}', [ReviewController::class, 'destroy']);
+});
+
 Route::group(['middleware'=>['auth', 'can:user-only']], function(){
+    Route::post('/sort', [ShopController::class, 'sort']);
     Route::get('/mypage', [UserInformationController::class, 'create'])->middleware('verified');
     Route::post('/favorite', [UserInformationController::class, 'store']);
     Route::delete('/favorite', [UserInformationController::class, 'destroy']);
@@ -59,8 +64,9 @@ Route::group(['middleware'=>['auth', 'can:user-only']], function(){
     Route::patch('/reservation', [ReservationController::class, 'update']);
     Route::delete('/reservation', [ReservationController::class, 'destroy']);
     Route::get('/done', [ReservationController::class, 'done']);
-    Route::get('/review/{reservation_id}', [ReviewController::class, 'create']);
+    Route::get('/review/{detail_id}', [ReviewController::class, 'create']);
     Route::post('/review', [ReviewController::class, 'store']);
+    Route::post('/review/update/{review_id}', [ReviewController::class, 'update']);
 });
 
 Route::group(['middleware'=>['auth', 'can:manager-only']], function(){

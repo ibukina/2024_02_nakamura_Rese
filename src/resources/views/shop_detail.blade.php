@@ -19,6 +19,9 @@
             <div class="shop-tag_genre">#{{ $detail->genre->genre }}</div>
         </div>
         <div class="shop-summary">{{ $detail->summary }}</div>
+        @can('user-only')
+        <a class="review-link" href="/review/{{ $detail->id }}">口コミを投稿する</a>
+        @endcan
     </div>
     @can('manager-only')
     <form class="update-form" action="/management" method="post">

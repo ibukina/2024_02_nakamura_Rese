@@ -27,5 +27,6 @@ class Review extends Model
         'reservation_id',
         'score',
         'comment',
+        'img_url',
     ];
 }

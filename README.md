@@ -317,6 +317,36 @@ php artisan migrate
 を実行して、マイグレーションテーブルを作成してください。<br>
 php コンテナからのログアウトには`exit`を実行してください。<br>
 
+- ストレージのシンボリックリンク作成<br>
+  このアプリケーションでは画像を storage/app/public/image 以下に保存するため、シンボリックリンクと保存先の image ディレクトリを作成します。
+
+```phpコンテナ
+chmod -R 775 storage
+```
+
+```phpコンテナ
+chmod -R 775 public/storage
+```
+
+```phpコンテナ
+php artisan storage:link
+```
+
+```phpコンテナ
+mkdir -p storage/app/public/image
+```
+
+これらを順に行ってください。
+
+- データの作成
+  デフォルトの情報を作成するため、シーディングを行います。
+
+```phpコンテナ
+php artisan db:seed
+```
+
+これでデータが作成されました。
+
 - メールサーバーの設定<br>
   .env ファイルと APP_KEY の作成で変更した.env ファイルを変更します。
   .env ファイルの 32 から 39 行目を、ご利用されるメールサーバーの情報に変更してください。

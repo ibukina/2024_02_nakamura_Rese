@@ -26,6 +26,7 @@ class ReviewRequest extends FormRequest
         return [
             'score'=>['required',],
             'comment'=>['required', 'string', 'max:200',],
+            'store_image'=>['file', 'image', 'mimes:jpeg,png',],
         ];
     }
 
@@ -35,6 +36,9 @@ class ReviewRequest extends FormRequest
             'comment.required'=>'何かコメントを入力してください。',
             'comment.string'=>'コメントを文字列で入力してください',
             'comment.max'=>'コメントを200文字以下で入力してください',
+            'store_image.file'=>'画像のアップロードが出来ていません',
+            'store_image.image'=>'画像ファイルを選択してください',
+            'store_image.mimes'=>'画像ファイルはjpeg,pngの形式のもののみアップロード可能です',
         ];
     }
 }

@@ -19,7 +19,8 @@ return new class extends Migration
             $table->foreignId('shop_id')->constrained()->cascadeOnDelete();
             $table->foreignId('reservation_id')->constrained()->cascadeOnDelete();
             $table->integer('score');
-            $table->string('comment', 200);
+            $table->text('comment')->nullable();
+            $table->string('img_url')->nullable();
             $table->timestamps();
         });
     }

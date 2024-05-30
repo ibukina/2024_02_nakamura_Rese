@@ -9,6 +9,7 @@ use App\Models\Image;
 use App\Models\Area;
 use App\Models\Genre;
 use App\Models\Shop;
+use App\Models\Review;
 
 class ShopController extends Controller
 {
@@ -22,6 +23,25 @@ class ShopController extends Controller
             return view ('shop_all', compact('areas', 'genres', 'shops', 'favorites'));
         }
         return view ('shop_all', compact('areas', 'genres', 'shops'));
+    }
+
+    public function sort(Request $request){
+        $areas=Area::all();
+        $genres=Genre::all();
+        $sort=$request->sort;
+        if($sort == 'good-ratings'){
+            $shops=Shop::withAvg('reviews', 'score')->orderByDesc('reviews_avg_score')->get();
+        }elseif($sort == 'bad-ratings'){
+            $shops=Shop::withAvg('reviews', 'score')->orderBy('reviews_avg_score')->get();
+        }else{
+            $shops=Shop::inRandomOrder()->get();
+        }
+        if(Auth::check()){
+            $favorites=Auth::user()->favorites()->with('shop')->get();
+            $favorites=$favorites->keyBy('shop_id');
+            return view ('shop_all', compact('areas', 'genres', 'shops', 'favorites'));
+        }
+        return view('shop_all', compact('areas', 'genres', 'shops'));
     }
 
     public function search(Request $request){
@@ -41,6 +61,11 @@ class ShopController extends Controller
         $areas=Area::all();
         $genres=Genre::all();
         $detail=Shop::find($shop_id);
+        $user_id=Auth::id();
+        $review=Review::where('user_id', $user_id)->get();
+        if($review){
+            return view ('shop_detail', compact('images', 'areas', 'genres', 'detail', 'review'));
+        }
         return view ('shop_detail', compact('images', 'areas', 'genres', 'detail'));
     }
 
