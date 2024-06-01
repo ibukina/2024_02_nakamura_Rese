@@ -15,12 +15,12 @@ class ReviewController extends Controller
     public function create($detail_id){
         $shop=Shop::find($detail_id);
         $user_id=Auth::id();
-        $review=Review::where('user_id', $user_id)->get();
+        $review=Review::where('shop_id', $detail_id)->where('user_id', $user_id)->get();
         return view('review', compact('shop', 'review', 'user_id'));
     }
 
     public function store(ReviewRequest $request){
-        if($request->store_image){
+        if(!is_null($request->store_image)){
             $image_file=$request->file('store_image');
             $filename=$image_file->getClientOriginalName();
             $image_path=$image_file->storeAs('public/image', $filename);
@@ -29,7 +29,6 @@ class ReviewController extends Controller
             $review=[
                 'user_id'=>$request->user_id,
                 'shop_id'=>$request->shop_id,
-                'reservation_id'=>$request->reservation_id,
                 'score'=>$request->score,
                 'comment'=>$request->comment,
                 'img_url'=>$read_path,
@@ -38,7 +37,6 @@ class ReviewController extends Controller
         $review=[
             'user_id'=>$request->user_id,
             'shop_id'=>$request->shop_id,
-            'reservation_id'=>$request->reservation_id,
             'score'=>$request->score,
             'comment'=>$request->comment,
         ];
@@ -46,11 +44,25 @@ class ReviewController extends Controller
         return redirect()->back()->with('message', '口コミを投稿しました');
     }
 
-    public function update($review_id){
+    public function update(ReviewRequest $request, $review_id){
+        if(!is_null($request->store_image)){
+            $image_file=$request->file('store_image');
+            $filename=$image_file->getClientOriginalName();
+            $image_path=$image_file->storeAs('public/image', $filename);
+            //画像を保存するパスは"public/image/xxx.jpeg"
+            $read_path = str_replace('public/', 'storage/', $image_path);
+        }
+        $review=[
+            'score'=>$request->score,
+            'comment'=>$request->comment,
+            'img_url'=>$read_path,
+        ];
+        Review::find($review_id)->update($review);
         return redirect()->back()->with('message', '口コミを更新しました');
     }
 
     public function destroy($review_id){
+        Review::find($review_id)->delete();
         return redirect()->back()->with('message', '口コミを削除しました');
     }
 }

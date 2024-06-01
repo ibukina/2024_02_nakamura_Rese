@@ -1,5 +1,78 @@
 .content-review{
+    display: flex;
     margin: 0 50px;
+}
+
+.shop-container {
+    width: 300px;
+    height: 270px;
+    margin: 0 5px 30px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.shop-image_item {
+    object-fit: cover;
+    width: 100%;
+    height: 150px;
+    border-radius: 5px 5px 0 0;
+}
+
+.detail-wrapper {
+    padding: 15px 15px 0;
+}
+
+.shop-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.shop-tag_wrapper {
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.detail-mark_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.detail-button {
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    background-color: #3560F6;
+    font-size: 12px;
+    color: white;
+}
+
+.favorite-button {
+    width: 40px;
+    height: 30px;
+    border: none;
+    background: none;
+}
+
+.favorite-mark_image-gray {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-image: url(../img/grayheart.png);
+    background-size: cover;
+}
+
+.favorite-mark_image-red {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-image: url(../img/redheart.png);
+    background-size: cover;
 }
 
 .review-form {
@@ -57,6 +130,10 @@ select::-ms-expand {
     color: black;
 }
 
+.form-item_file{
+    color: black;
+}
+
 .review-button {
     position: absolute;
     bottom: 0;
@@ -70,6 +147,7 @@ select::-ms-expand {
 }
 
 .error-wrapper {
+    color: red;
     margin-left: 20px;
 }
 

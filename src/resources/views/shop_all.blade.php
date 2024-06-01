@@ -6,16 +6,6 @@
 
 @section('header_content')
 <div class="content-search">
-    @can('admin-only')
-    <div class="management-link_wrapper">
-        <a class="management-link" href="/admin">追加画面へ</a>
-    </div>
-    @endcan
-    @can('manager-only')
-    <div class="management-link_wrapper">
-        <a class="management-link" href="/management">管理画面へ</a>
-    </div>
-    @endcan
     @can('user-only')
     <div class="sort-form_wrapper">
         <form class="sort-form" action="/sort" method="post">
@@ -56,6 +46,17 @@
 @endsection
 
 @section('main_content')
+@can('admin-only')
+<div class="management-link_wrapper">
+    <a class="management-link" href="/admin">店舗代表者追加</a>
+    <a class="management-link" href="/admin/shop">店舗追加</a>
+</div>
+@endcan
+@can('manager-only')
+<div class="management-link_wrapper">
+    <a class="management-link" href="/management">管理画面へ</a>
+</div>
+@endcan
 <div class="content-shop">
     <div class="shop-range">
         @if(!empty($shops))

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Gate;
 use App\Http\Requests\ShopRequest;
 use App\Models\Image;
 use App\Models\Area;
@@ -30,9 +31,9 @@ class ShopController extends Controller
         $genres=Genre::all();
         $sort=$request->sort;
         if($sort == 'good-ratings'){
-            $shops=Shop::withAvg('reviews', 'score')->orderByDesc('reviews_avg_score')->get();
+            $shops=Shop::withAvg('reviews', 'score')->orderByRaw('reviews_avg_score is null')->orderByDesc("reviews_avg_score")->get();
         }elseif($sort == 'bad-ratings'){
-            $shops=Shop::withAvg('reviews', 'score')->orderBy('reviews_avg_score')->get();
+            $shops=Shop::withAvg('reviews', 'score')->orderByRaw('reviews_avg_score is null')->orderBy("reviews_avg_score")->get();
         }else{
             $shops=Shop::inRandomOrder()->get();
         }
@@ -62,11 +63,11 @@ class ShopController extends Controller
         $genres=Genre::all();
         $detail=Shop::find($shop_id);
         $user_id=Auth::id();
-        $review=Review::where('user_id', $user_id)->get();
-        if($review){
-            return view ('shop_detail', compact('images', 'areas', 'genres', 'detail', 'review'));
+        $reviews=Review::where('shop_id', $shop_id)->where('user_id', $user_id)->get();
+        if(Gate::allows('manager-only')){
+            return view ('shop_detail_management', compact('images', 'areas', 'genres', 'detail', 'reviews'));
         }
-        return view ('shop_detail', compact('images', 'areas', 'genres', 'detail'));
+        return view ('shop_detail', compact('images', 'areas', 'genres', 'detail', 'reviews'));
     }
 
     public function update(ShopRequest $request){

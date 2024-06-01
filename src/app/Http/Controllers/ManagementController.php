@@ -68,4 +68,19 @@ class ManagementController extends Controller
         Shop::create($shop);
         return redirect('/management')->with('message', '新店舗を追加しました');
     }
+
+    public function shopUpdate(ShopRequest $request){
+        $shops=[
+            'image_id'=>$request->image_id,
+            'area_id'=>$request->area_id,
+            'genre_id'=>$request->genre_id,
+            'name'=>$request->name,
+            'summary'=>$request->summary,
+        ];
+        Shop::find($request->shop_id)->update($shops);
+        $areas=Area::all();
+        $genres=Genre::all();
+        $shops=Shop::all();
+        return view ('shop_all', compact('areas', 'genres', 'shops'));
+    }
 }
