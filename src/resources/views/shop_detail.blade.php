@@ -20,90 +20,56 @@
         </div>
         <div class="shop-summary">{{ $detail->summary }}</div>
         @can('user-only')
+        @if($reviews->isNotEmpty())
+        <div class="shop-review_edit-wrapper">
+            @foreach($reviews as $review)
+            <form class="review-edit_form" action="/review/update/{{ $review->id }}" method="post">
+                @csrf
+                <input type="hidden" name="review_id" value="$review->id">
+                <div class="review-form_wrapper">
+                    <div class="review-title">Review</div>
+                    <h4 class="form-item_title">体験を評価してください</h4>
+                    <label class="form-item">
+                        <span class="form-item_star">☆</span>
+                        <span class="form-item_star">☆</span>
+                        <span class="form-item_star">☆</span>
+                        <span class="form-item_star">☆</span>
+                        <span class="form-item_star">☆</span>
+                        <input type="hidden" id="score-value" name="score" value="{{ $review->score }}">
+                    </label>
+                    <h4 class="form-item_title">口コミを投稿</h4>
+                    <label class="form-item">
+                        <textarea class="form-item_text" name="comment" placeholder="カジュアルな夜のお出かけにおすすめのスポット">{{ $review->comment }}</textarea>
+                    </label>
+                    <p class="form-item_text-limit"><span class="limit-number"></span> (最大文字数)</p>
+                    <h4 class="form-item_title">画像の追加</h4>
+                    <label class="form-item_file">
+                        <input class="form-item_input" type="file" name="img_url" placeholder="クリックして写真を追加">
+                        <p class="form-item_input-summary">またはドラッグアンドドロップ</p>
+                    </label>
+                    @if (count($errors) > 0)
+                    <div class="error-wrapper">
+                        <div class="error-has">
+                        入力内容に問題があります
+                        </div>
+                        <div class="error-message_wrapper">
+                            @foreach ($errors->all() as $error)
+                            <li class="error-message">{{$error}}</li>
+                            @endforeach
+                        </div>
+                    </div>
+                    @endif
+                </div>
+                <button class="review-button">送信</button>
+            </form>
+            @endforeach
+        </div>
+        @else
         <a class="review-link" href="/review/{{ $detail->id }}">口コミを投稿する</a>
+        @endif
         @endcan
     </div>
-    @can('manager-only')
-    <form class="update-form" action="/management" method="post">
-        @method('PATCH')
-        @csrf
-        <input type="hidden" name="shop_id" value="{{ $detail->id }}">
-        <div class="update-form_wrapper">
-            <div class="update-title_wrapper">
-                <div class="update-title">店舗内容変更</div>
-                <a class="store-link" href="/management">店舗情報の
-                    追加はこちらから</a>
-            </div>
-            <label class="select-wrapper">
-                <select class="form-item_input" name="image_id" id="image">
-                    <option value="">All Image</option>
-                    @foreach($images as $image)
-                    <option value="{{ $image->id }}">{{ $image->image }}</option>
-                    @endforeach
-                </select>
-            </label>
-            <label class="select-wrapper">
-                <select class="form-item_input" name="area_id" id="area">
-                    <option value="">All Area</option>
-                    @foreach($areas as $area)
-                    <option value="{{ $area->id }}">{{ $area->area }}</option>
-                    @endforeach
-                </select>
-            </label>
-            <label class="select-wrapper">
-                <select class="form-item_input" name="genre_id" id="genre">
-                    <option value="">All Genre</option>
-                    @foreach($genres as $genre)
-                    <option value="{{ $genre->id }}">{{ $genre->genre }}</option>
-                    @endforeach
-                </select>
-            </label>
-            <label class="select-wrapper">
-                <input class="form-item_input" name="name" type="text" value="{{ $detail->name }}">
-            </label>
-            <label class="select-wrapper">
-                <textarea class="form-item_input form-item_textarea" name="summary" cols="30" rows="10">{{ $detail->summary }}</textarea>
-            </label>
-            <div class="result-wrapper result-wrapper_update">
-                <table class="result-table">
-                    <tr class="table-row">
-                        <th class="table-header">Image</th>
-                        <td class="table-data table-data_image">{{ $detail->image->image }}</td>
-                    </tr>
-                    <tr class="table-row">
-                        <th class="table-header">Area</th>
-                        <td class="table-data table-data_area">{{ $detail->area->area }}</td>
-                    </tr>
-                    <tr class="table-row">
-                        <th class="table-header">Genre</th>
-                        <td class="table-data table-data_genre">{{ $detail->genre->genre }}</td>
-                    </tr>
-                    <tr class="table-row">
-                        <th class="table-header">Name</th>
-                        <td class="table-data table-data_name">{{ $detail->name }}</td>
-                    </tr>
-                    <tr class="table-row">
-                        <th class="table-header">Summary</th>
-                        <td class="table-data table-data_summary">{{ $detail->summary }}</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <button class="reservation-button">変更する</button>
-        @if (count($errors) > 0)
-        <div class="error-wrapper">
-            <div class="error-has">
-                入力内容に問題があります
-            </div>
-            <div class="error-message_wrapper">
-                @foreach ($errors->all() as $error)
-                <li class="error-message">{{$error}}</li>
-                @endforeach
-            </div>
-        </div>
-        @endif
-    </form>
-    @elsecan('user-only')
+    @can('user-only')
     <form class="reservation-form" action="/reservation" method="post">
         @csrf
         <input type="hidden" name="shop_id" value="{{ $detail->id }}">

@@ -73,7 +73,10 @@
             <p class="form-item_text-limit"><span class="limit-number"></span> (最大文字数)</p>
             <h4 class="form-item_title">画像の追加</h4>
             <label class="form-item_file">
-                <input class="form-item_input" type="file" name="img_url" placeholder="クリックして写真を追加">
+                <div class="form-item_input-wrapper">
+                    <input class="form-item_input" type="file" name="img_url">
+                    <span class="form-item_input-message">クリックして写真を追加</span>
+                </div>
                 <p class="form-item_input-summary">またはドラッグアンドドロップ</p>
             </label>
             @if (count($errors) > 0)

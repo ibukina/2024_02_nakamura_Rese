@@ -17,10 +17,6 @@ class Reservation extends Model
         return $this->belongsTo('App\Models\Shop');
     }
 
-    public function review(){
-        return $this->belongsTo('App\Models\Review');
-    }
-
     protected $fillable = [
         'user_id',
         'shop_id',

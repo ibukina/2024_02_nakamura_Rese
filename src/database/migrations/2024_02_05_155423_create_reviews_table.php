@@ -17,9 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('shop_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('reservation_id')->constrained()->cascadeOnDelete();
             $table->integer('score');
-            $table->text('comment')->nullable();
+            $table->text('comment', 400)->nullable();
             $table->string('img_url')->nullable();
             $table->timestamps();
         });

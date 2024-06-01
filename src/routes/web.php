@@ -76,10 +76,12 @@ Route::group(['middleware'=>['auth', 'can:manager-only']], function(){
     Route::post('/management/area', [ManagementController::class, 'areaStore']);
     Route::post('/management/genre', [ManagementController::class, 'genreStore']);
     Route::post('/management/shop', [ManagementController::class, 'shopStore']);
-    Route::patch('/management', [ShopController::class, 'update']);
+    Route::patch('/management/shop/update', [ManagementController::class, 'shopUpdate']);
 });
 
 Route::group(['middleware'=>['auth', 'can:admin-only']], function(){
     Route::get('/admin', [AdminController::class, 'create']);
     Route::post('/admin', [AdminController::class, 'store']);
+    Route::get('/admin/shop', [AdminController::class, 'csvView']);
+    Route::post('/admin/shop', [AdminController::class, 'csvCreate']);
 });

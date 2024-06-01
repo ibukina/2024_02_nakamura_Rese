@@ -16,7 +16,6 @@
         @if(!empty($reservations))
         <div class="reservation-range">
             @foreach($reservations as $reservation)
-            @if(!in_array($reservation->id, $reviewedReservationIds))
             <div class="reservation-information">
                 <div class="reservation-information_title">
                     @if($now->greaterThan(date('Y-m-d H:i:s', strtotime($reservation->date . $reservation->time))))
@@ -68,7 +67,6 @@
                     </tr>
                 </table>
             </div>
-            @endif
             @endforeach
         </div>
         @else
