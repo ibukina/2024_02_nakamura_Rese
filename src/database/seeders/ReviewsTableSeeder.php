@@ -19,8 +19,8 @@ class ReviewsTableSeeder extends Seeder
             [
                 'user_id'=>'3',
                 'shop_id'=>'1',
-                'score'=>'3',
-                'comment'=>'可もなく不可もなくという感じ。',
+                'score'=>'4',
+                'comment'=>'コースでいい値段ですが、お店の雰囲気はフォーマルな感じではなく品があっていい雰囲気です。予約して行きましたが、テーブルに感謝のメッセージが書かれてありました。',
             ],
             [
                 'user_id'=>'3',

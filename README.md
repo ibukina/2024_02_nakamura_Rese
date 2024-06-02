@@ -4,13 +4,15 @@
 
 #### 店舗一覧
 
-?画像変える
-![rese_shop_all](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/87337616-55d0-409c-b917-4d9b2192e550)
+![rese_shop_all](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/ac46ae63-4a35-4234-b8fe-0d5eb6748a04)
 
 #### 店舗詳細・予約
 
-?画像変える
-![rese_shop_detail](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/5d61b1e9-42e8-4f01-8fa5-87735f13cfec)
+![rese_shop_detail](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/18c93753-bfc5-4749-8152-0e07dcc4e134)
+
+#### 店舗詳細・予約(口コミがある場合)
+
+![rese_shop_detail_has_review](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/c574fa44-f612-4fe0-94c3-2ef57ccfb655)
 
 #### 予約完了
 
@@ -46,8 +48,7 @@
 
 #### 店舗の口コミ投稿
 
-?画像変える
-![rese_review](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/b6bc3b27-f98e-4b5a-b21f-2b9eb9f26141)
+![rese_review](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/9717d72c-6960-4460-99cc-ea06bef1da7d)
 
 #### 店舗の口コミ一覧
 

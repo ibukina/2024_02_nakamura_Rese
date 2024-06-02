@@ -55,32 +55,11 @@
     </div>
     <form class="review-form" action="/review" method="post" enctype="multipart/form-data">
         @csrf
+        @if(!is_null($review))
+        <input type="hidden" name="review_id" value="{{ $review->id }}">
+        @endif
         <input type="hidden" name="user_id" value="{{ $user_id }}">
         <input type="hidden" name="shop_id" value="{{ $shop->id }}">
-        <h4 class="form-item_title">体験を評価してください</h4>
-        <label class="score">
-            <span class="star" data-value="1">★</span>
-            <span class="star" data-value="2">★</span>
-            <span class="star" data-value="3">★</span>
-            <span class="star" data-value="4">★</span>
-            <span class="star" data-value="5">★</span>
-            <input type="hidden" id="score-value" name="score" value="">
-        </label>
-        <h4 class="form-item_title">口コミを投稿</h4>
-        <label class="form-item">
-            <textarea class="form-item_text" name="comment" placeholder="カジュアルな夜のお出かけにおすすめのスポット"></textarea>
-            <p class="form-item_text-limit"><span class="limit-number"></span> (最大文字数)</p>
-        </label>
-        <h4 class="form-item_title">画像の追加</h4>
-        <label class="form-item_file">
-            <div class="form-item_input-wrapper">
-                <input class="form-item_input" type="file" name="img_url">
-                <div class="form-item_input-texts">
-                    <p class="form-item_input-message">クリックして写真を追加</p>
-                    <p class="form-item_input-summary">またはドラッグアンドドロップ</p>
-                </div>
-            </div>
-        </label>
         @if (count($errors) > 0)
         <div class="error-wrapper">
         <div class="error-has">
@@ -93,6 +72,38 @@
         </div>
         </div>
         @endif
+        <h4 class="form-item_title">体験を評価してください</h4>
+        <label class="score">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+            @if(is_null($review))
+            <input type="hidden" id="score-value" name="score" value="">
+            @else
+            <input type="hidden" id="score-value" name="score" value="{{ $review->score }}">
+            @endif
+        </label>
+        <h4 class="form-item_title">口コミを投稿</h4>
+        <label class="form-item">
+            @if(is_null($review))
+            <textarea class="form-item_text" name="comment" id="text-count" placeholder="カジュアルな夜のお出かけにおすすめのスポット"></textarea>
+            @else
+            <textarea class="form-item_text" name="comment" id="text-count" placeholder="カジュアルな夜のお出かけにおすすめのスポット">{{ $review->comment }}</textarea>
+            @endif
+            <p class="form-item_text-limit"><span class="limit-number">0</span>/400 (最大文字数)</p>
+        </label>
+        <h4 class="form-item_title">画像の追加</h4>
+        <label class="form-item_file">
+            <div class="form-item_input-wrapper">
+                <input class="form-item_input" type="file" name="img_url">
+                <div class="form-item_input-texts">
+                    <p class="form-item_input-message">クリックして写真を追加</p>
+                    <p class="form-item_input-summary">またはドラッグアンドドロップ</p>
+                </div>
+            </div>
+        </label>
         <button class="review-button">口コミを投稿</button>
     </form>
 </div>
