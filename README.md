@@ -4,10 +4,12 @@
 
 #### 店舗一覧
 
+?画像変える
 ![rese_shop_all](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/87337616-55d0-409c-b917-4d9b2192e550)
 
 #### 店舗詳細・予約
 
+?画像変える
 ![rese_shop_detail](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/5d61b1e9-42e8-4f01-8fa5-87735f13cfec)
 
 #### 予約完了
@@ -42,9 +44,14 @@
 
 ![rese_reservation_update](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/12c3ec08-4013-4014-a4c4-2d3d1b883225)
 
-#### 予約した店舗の評価
+#### 店舗の口コミ投稿
 
+?画像変える
 ![rese_review](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/b6bc3b27-f98e-4b5a-b21f-2b9eb9f26141)
+
+#### 店舗の口コミ一覧
+
+?画像追加する
 
 #### 店舗管理
 
@@ -57,6 +64,10 @@
 #### 店舗代表者追加
 
 ![rese_admin](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/821d275a-326c-4fb4-930f-fa4b97f73ea4)
+
+#### csv ファイルインポート
+
+?画像追加
 
 > [!IMPORTANT]
 > このアプリは docker , VSCode の使用を前提としています。
@@ -89,8 +100,8 @@
   http://localhost/done
 - 予約変更画面  
   http://localhost/reservation/{reservation_id}
-- 評価画面  
-  http://localhost/review/{reservation_id}
+- 口コミ投稿・編集画面  
+  http://localhost/review/{detail_id}
   <br>
   ↑ これらは一般ユーザーのみアクセスできます。<br>
 
@@ -102,11 +113,13 @@
 
 - 店舗代表者追加画面  
   http://localhost/admin
+- csv ファイルインポート画面
+
   <br>
   ↑ これは管理者のみアクセスできます。<br>
 
 新規登録・ログイン・ログアウト・ホームページ・マイページは、ホーム画面左上にあるアイコンを押していただくとメニュー画面から遷移できます。  
-一般ユーザー以外でログインした場合、マイページ・お気に入り・予約・評価機能は利用できません。  
+一般ユーザー以外でログインした場合、マイページ・お気に入り・予約・口コミ機能は利用できません。  
 ログインに必要な情報は新規登録画面から追加するか、アカウントの種類の欄を利用してください。  
 ユーザーのメール認証後の遷移先は初回のみホーム画面、それ以降はマイページとなっております。
 
@@ -131,11 +144,14 @@
 - エリアで検索する
 - ジャンルで検索する
 - 店名で検索する
-- ユーザー来店後評価
+- 店舗のソート機能
+- ユーザーのみ口コミの投稿・編集機能
+- ユーザーと管理者のみ口コミの削除機能
 - 店舗代表者による店舗情報の作成
 - 店舗代表者による店舗情報の更新
 - ユーザー予約情報の確認
 - 管理者による店舗代表者の作成
+- 管理者のみ csv ファイルインポートによる店舗の作成
 
 ## 使用技術(実行環境)
 
@@ -162,7 +178,7 @@
   ![rese_table_genres](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/9a070389-a18f-477b-9ce4-778a99444486)
 
 - shopsTable
-  ![rese_table_shops](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/48293885-8290-4056-bb89-eafe3e67f43b)
+  ![rese_table_shops](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/57e74f28-295b-40a0-ae4a-27a0550a0ef4)
 
 - favoritesTable
   ![rese_table_favorites](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/e58558c3-3c01-48b3-a249-0c8ba684d240)
@@ -171,11 +187,11 @@
   ![rese_table_reservations](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/52310a7b-0c99-46ad-bafc-799b5e1e0ce0)
 
 - reviewsTable
-  ![rese_table_reviews](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/7e9c87f9-dc4d-4110-ae13-dd7bd79664b1)
+  ![rese_table_reviews](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/a669036e-567f-4d3b-b4e2-c4c9c6377a40)
 
 ## ER 図
 
-![rese drawio](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/5ba372f1-f915-4b2b-a869-ae749931cdb0)
+![rese drawio](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/caabff57-6d4e-4224-9141-db0e901b976d)
 
 ## 環境構築
 
@@ -362,6 +378,13 @@ MAIL_FROM_ADDRESS="hello@example.com"
 MAIL_FROM_NAME="${APP_NAME}"
 ```
 
+- node_modules のインストール
+  このアプリケーションでは jquery・vite 等を利用していますので、src ディレクトリに移動して、
+  ```srcディレクトリ
+  npm install
+  ```
+  を行ってください。
+
 これで環境構築は終了です。お疲れ様でした。
 
 ## アカウント等ダミーデータの種類
@@ -388,6 +411,8 @@ php artisan db:seed
 > 管理者
 > username:admin  
 > email:admin@example.com  
-> password:2DDywxxwE3VM@B2
+> password:2DDywxxwE3VM@D4
 
 `php artisan db:seed`で作成した情報は、`php artisan migrate:fresh`で一括削除できます。
+
+## csv ファイルの書き方について

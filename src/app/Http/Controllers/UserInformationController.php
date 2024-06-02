@@ -27,7 +27,7 @@ class UserInformationController extends Controller
             'shop_id'=>$request->shop_id
         ];
         Favorite::create($favorite);
-        return redirect('/');
+        return redirect()->back();
     }
 
     public function destroy(Request $request){
@@ -35,6 +35,6 @@ class UserInformationController extends Controller
         if($favorite){
             $favorite->delete();
         }
-        return redirect('/mypage');
+        return redirect()->back();
     }
 }
