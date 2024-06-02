@@ -6,16 +6,23 @@
 .sort-form_wrapper{
     width: 130px;
     height: 40px;
-    margin-right: 5px;
+    margin-right: 25px;
     padding: 5px 0;
     border-radius: 5px;
     background-color: white;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
 }
 
+.sort-form{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
 .sort-form_item{
     padding: 2px;
     border: none;
+    font-size: 12px;
 }
 
 .search-form{
