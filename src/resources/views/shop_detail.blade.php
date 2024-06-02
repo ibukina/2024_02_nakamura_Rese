@@ -6,6 +6,39 @@
 
 @section('main_content')
 <div class="content-detail">
+    @if($reviews->isNotEmpty())
+    @can('user-only')
+    <div class="detail-wrapper">
+        <img class="shop-image_has-review" src="{{ asset( $detail->image->image ) }}" alt="画像">
+        <div class="shop-tag_wrapper">
+            <div class="shop-tag_area">#{{ $detail->area->area }}</div>
+            <div class="shop-tag_genre">#{{ $detail->genre->genre }}</div>
+        </div>
+        <div class="shop-summary">{{ $detail->summary }}</div>
+        <a class="review-all_link" href="/review/all">全ての口コミ情報</a>
+        <div class="shop-review_edit-wrapper">
+            @foreach($reviews as $review)
+            <div class="review-edit_form-wrapper">
+                <a class="review-delete_link" href="/review/delete/{{ $review->id }}">口コミを削除</a>
+                <a class="review-edit_link" href="/review/{{ $detail->id }}">口コミを編集</a>
+            </div>
+            <div class="user-review_wrapper">
+                <label class="score">
+                    @for($score = 1; $score <= 5; $score++)
+                    @if($score <= $review->score)
+                    <span class="star filled">★</span>
+                    @else
+                    <span class="star">★</span>
+                    @endif
+                    @endfor
+                </label>
+                <p class="user-review">{{ $review->comment }}</p>
+            </div>
+            @endforeach
+        </div>
+    </div>
+    @endcan
+    @else
     <div class="detail-wrapper">
         <div class="detail-title">
             <div class="back-form">
@@ -13,62 +46,17 @@
             </div>
             <div class="shop-name">{{ $detail->name }}</div>
         </div>
-            <img class="shop-image" src="{{ asset( $detail->image->image ) }}" alt="画像">
+        <img class="shop-image" src="{{ asset( $detail->image->image ) }}" alt="画像">
         <div class="shop-tag_wrapper">
             <div class="shop-tag_area">#{{ $detail->area->area }}</div>
             <div class="shop-tag_genre">#{{ $detail->genre->genre }}</div>
         </div>
         <div class="shop-summary">{{ $detail->summary }}</div>
         @can('user-only')
-        @if($reviews->isNotEmpty())
-        <div class="shop-review_edit-wrapper">
-            @foreach($reviews as $review)
-            <form class="review-edit_form" action="/review/update/{{ $review->id }}" method="post">
-                @csrf
-                <input type="hidden" name="review_id" value="$review->id">
-                <div class="review-form_wrapper">
-                    <div class="review-title">Review</div>
-                    <h4 class="form-item_title">体験を評価してください</h4>
-                    <label class="form-item">
-                        <span class="form-item_star">☆</span>
-                        <span class="form-item_star">☆</span>
-                        <span class="form-item_star">☆</span>
-                        <span class="form-item_star">☆</span>
-                        <span class="form-item_star">☆</span>
-                        <input type="hidden" id="score-value" name="score" value="{{ $review->score }}">
-                    </label>
-                    <h4 class="form-item_title">口コミを投稿</h4>
-                    <label class="form-item">
-                        <textarea class="form-item_text" name="comment" placeholder="カジュアルな夜のお出かけにおすすめのスポット">{{ $review->comment }}</textarea>
-                    </label>
-                    <p class="form-item_text-limit"><span class="limit-number"></span> (最大文字数)</p>
-                    <h4 class="form-item_title">画像の追加</h4>
-                    <label class="form-item_file">
-                        <input class="form-item_input" type="file" name="img_url" placeholder="クリックして写真を追加">
-                        <p class="form-item_input-summary">またはドラッグアンドドロップ</p>
-                    </label>
-                    @if (count($errors) > 0)
-                    <div class="error-wrapper">
-                        <div class="error-has">
-                        入力内容に問題があります
-                        </div>
-                        <div class="error-message_wrapper">
-                            @foreach ($errors->all() as $error)
-                            <li class="error-message">{{$error}}</li>
-                            @endforeach
-                        </div>
-                    </div>
-                    @endif
-                </div>
-                <button class="review-button">送信</button>
-            </form>
-            @endforeach
-        </div>
-        @else
         <a class="review-link" href="/review/{{ $detail->id }}">口コミを投稿する</a>
-        @endif
         @endcan
     </div>
+    @endif
     @can('user-only')
     <form class="reservation-form" action="/reservation" method="post">
         @csrf

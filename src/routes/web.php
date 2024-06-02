@@ -51,7 +51,7 @@ Route::group(['middleware'=>['auth', 'can:user-higher']], function (){
 });
 
 Route::group(['middleware'=>['auth', 'can:user-or-admin-only']], function (){
-    Route::post('/review/delete/{review_id}', [ReviewController::class, 'destroy']);
+    Route::get('/review/delete/{review_id}', [ReviewController::class, 'destroy']);
 });
 
 Route::group(['middleware'=>['auth', 'can:user-only']], function(){
@@ -65,8 +65,7 @@ Route::group(['middleware'=>['auth', 'can:user-only']], function(){
     Route::delete('/reservation', [ReservationController::class, 'destroy']);
     Route::get('/done', [ReservationController::class, 'done']);
     Route::get('/review/{detail_id}', [ReviewController::class, 'create']);
-    Route::post('/review', [ReviewController::class, 'store']);
-    Route::post('/review/update/{review_id}', [ReviewController::class, 'update']);
+    Route::post('/review', [ReviewController::class, 'updateOrCreate']);
 });
 
 Route::group(['middleware'=>['auth', 'can:manager-only']], function(){

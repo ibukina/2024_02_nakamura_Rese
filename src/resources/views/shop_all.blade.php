@@ -8,10 +8,10 @@
 <div class="content-search">
     @can('user-only')
     <div class="sort-form_wrapper">
-        <span class="sort-form_item-span">並び替え：評価高/低</span>
         <form class="sort-form" action="/sort" method="post">
             @csrf
             <select class="sort-form_item" name="sort" onchange="this.form.submit()">
+            <option value="" disabled selected>並び替え：評価高/低</option>
                 <option value="random">ランダム</option>
                 <option value="good-ratings">評価が高い順</option>
                 <option value="bad-ratings">評価は低い順</option>

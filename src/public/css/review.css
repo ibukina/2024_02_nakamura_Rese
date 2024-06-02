@@ -114,6 +114,11 @@
     margin: 20px 0 0;
 }
 
+.form-item{
+    display: flex;
+    flex-direction: column;
+}
+
 .form-item_text{
     width: 95%;
     height: 90px;
@@ -131,16 +136,13 @@ textarea::placeholder{
 }
 
 .form-item_text-limit{
-    display: flex;
-    flex-direction: row-reverse;
-    width: 95%;
-    margin: 0;
+    display: inline-block;
+    width: 25%;
+    margin-left: auto;
     font-size: 10px;
 }
 
-.limit-number{
-    text-align: right;
-}
+
 
 .form-item_file{
     color: black;

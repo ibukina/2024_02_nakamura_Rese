@@ -19,6 +19,14 @@
     height: 100%;
 }
 
+select {
+    appearance: none;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
 .sort-form_item{
     padding: 2px;
     border: none;
