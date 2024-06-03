@@ -15,16 +15,20 @@ class FavoritesTableSeeder extends Seeder
      */
     public function run()
     {
-        $favorites=[
-            [
-                'user_id'=>'3',
-                'shop_id'=>'1',
-            ],
-            [
-                'user_id'=>'3',
-                'shop_id'=>'2',
-            ],
-        ];
-        DB::table('favorites')->insert($favorites);
+        if(app()->environment('local') || app()->environment('testing')){
+            $favorites=[
+                [
+                    'id'=>'1',
+                    'user_id'=>'3',
+                    'shop_id'=>'1',
+                ],
+                [
+                    'id'=>'2',
+                    'user_id'=>'3',
+                    'shop_id'=>'2',
+                ],
+            ];
+            DB::table('favorites')->insert($favorites);
+        }
     }
 }

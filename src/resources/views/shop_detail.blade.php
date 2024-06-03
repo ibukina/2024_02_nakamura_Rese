@@ -7,7 +7,7 @@
 @section('main_content')
 <div class="content-detail">
     @if($reviews->isNotEmpty())
-    @can('user-only')
+    @can('user-higher')
     <div class="detail-wrapper">
         <img class="shop-image_has-review" src="{{ asset( $detail->image->image ) }}" alt="画像">
         <div class="shop-tag_wrapper">
@@ -15,7 +15,8 @@
             <div class="shop-tag_genre">#{{ $detail->genre->genre }}</div>
         </div>
         <div class="shop-summary">{{ $detail->summary }}</div>
-        <a class="review-all_link" href="/review/all">全ての口コミ情報</a>
+        <a class="review-all_link" href="/review/all/{{ $detail->id }}">全ての口コミ情報</a>
+        @can('user-only')
         <div class="shop-review_edit-wrapper">
             @foreach($reviews as $review)
             <div class="review-edit_form-wrapper">
@@ -36,6 +37,7 @@
             </div>
             @endforeach
         </div>
+        @endcan
     </div>
     @endcan
     @else
@@ -54,6 +56,9 @@
         <div class="shop-summary">{{ $detail->summary }}</div>
         @can('user-only')
         <a class="review-link" href="/review/{{ $detail->id }}">口コミを投稿する</a>
+        @endcan
+        @can('admin-only')
+        <a class="review-all_link" href="/review/all/{{ $detail->id }}">全ての口コミ情報</a>
         @endcan
     </div>
     @endif
@@ -107,10 +112,9 @@
         </div>
         @endif
     </form>
+    @else
+    <div class="message">予約するにはユーザーでのログインが必要です</div>
     @endcan
-    @if(Auth::guest())
-    <div class="message">予約するにはログインが必要です</div>
-    @endif
 </div>
 <script src="{{ asset('js/reservation_result.js') }}" defer></script>
 <script src="{{ asset('js/update_result.js') }}" defer></script>

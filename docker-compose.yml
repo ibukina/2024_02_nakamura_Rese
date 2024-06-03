@@ -12,11 +12,12 @@ services:
             - php
 
     php:
-        build:
-            context: ..
-            dockerfile: ./docker/php/Dockerfile
+        build: ./docker/php
         volumes:
             - ./src:/var/www/
+            - /src/node_modules
+            - /src/vendor
+            - ./docker/php/php.ini:/usr/local/etc/php/php.ini
 
     mysql:
         image: mysql:8.0.26

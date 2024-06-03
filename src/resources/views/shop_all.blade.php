@@ -48,8 +48,7 @@
 @section('main_content')
 @can('admin-only')
 <div class="management-link_wrapper">
-    <a class="management-link" href="/admin">店舗代表者追加</a>
-    <a class="management-link" href="/admin/shop">店舗追加</a>
+    <a class="management-link" href="/admin">管理画面へ</a>
 </div>
 @endcan
 @can('manager-only')

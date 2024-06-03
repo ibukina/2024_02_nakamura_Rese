@@ -19,7 +19,7 @@
             <div class="shop-tag_genre">#{{ $detail->genre->genre }}</div>
         </div>
         <div class="shop-summary">{{ $detail->summary }}</div>
-        <!-- 口コミ見れるリンク -->
+        <a class="review-all_link" href="/review/all/{{ $detail->id }}">全ての口コミ情報</a>
     </div>
     <form class="update-form" action="/management/shop/update" method="post">
         @method('PATCH')

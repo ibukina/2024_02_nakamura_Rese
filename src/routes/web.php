@@ -48,6 +48,7 @@ Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 
 Route::group(['middleware'=>['auth', 'can:user-higher']], function (){
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
+    Route::get('/review/all/{detail_id}', [ReviewController::class, 'reviewAll']);
 });
 
 Route::group(['middleware'=>['auth', 'can:user-or-admin-only']], function (){
@@ -81,6 +82,5 @@ Route::group(['middleware'=>['auth', 'can:manager-only']], function(){
 Route::group(['middleware'=>['auth', 'can:admin-only']], function(){
     Route::get('/admin', [AdminController::class, 'create']);
     Route::post('/admin', [AdminController::class, 'store']);
-    Route::get('/admin/shop', [AdminController::class, 'csvView']);
     Route::post('/admin/shop', [AdminController::class, 'csvCreate']);
 });
