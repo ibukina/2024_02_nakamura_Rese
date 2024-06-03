@@ -11,6 +11,12 @@ use App\Models\Review;
 
 class ReviewController extends Controller
 {
+    public function reviewAll($detail_id){
+        $shop=Shop::find($detail_id);
+        $reviews=Review::where('shop_id', $detail_id)->get();
+        return view('review_all', compact('shop', 'reviews'));
+    }
+
     public function create($detail_id){
         $shop=Shop::find($detail_id);
         $user_id=Auth::id();

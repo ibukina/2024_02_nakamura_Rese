@@ -52,7 +52,7 @@
 
 #### 店舗の口コミ一覧
 
-?画像追加する
+![rese_review_all](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/717167fb-c483-4d14-802f-8843ce13aa85)
 
 #### 店舗管理
 
@@ -62,13 +62,9 @@
 
 ![rese_detail_update](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/b286e596-38b1-42e3-ae8c-c53fc223fe8b)
 
-#### 店舗代表者追加
+#### 店舗代表者追加・CSV ファイルインポート
 
-![rese_admin](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/821d275a-326c-4fb4-930f-fa4b97f73ea4)
-
-#### csv ファイルインポート
-
-?画像追加
+![rese_admin](https://github.com/ibukina/2024_02_nakamura_Rese/assets/142294463/22de2d5b-431f-476e-9293-88be3b57a02d)
 
 > [!IMPORTANT]
 > このアプリは docker , VSCode の使用を前提としています。
@@ -80,20 +76,25 @@
 
 ## アプリケーション URL
 
-- ホーム画面(店舗一覧)
+- ホーム画面(店舗一覧)  
   http://localhost/
-- 店舗詳細画面
+- 店舗詳細画面  
   http://localhost/detail/{shop_id}
-- メニュー画面
+- メニュー画面  
   http://localhost/menu
-- 新規登録画面
+- 新規登録画面  
   http://localhost/register
-- 登録完了画面
+- 登録完了画面  
   http://localhost/thanks
-- ログイン画面
+- ログイン画面  
   http://localhost/login
   <br>
   ↑ これらは登録・ログインなしで見られます。<br>
+
+- 口コミ一覧画面  
+  http://localhost/review/all/{detail_id}
+  <br>
+  ↑ これはログインすることで閲覧可能です。<br>
 
 - マイページ画面  
   http://localhost/mypage
@@ -112,9 +113,8 @@
   ↑ これは店舗代表者のみアクセスできます。  
   店舗情報変更時は店舗代表者としてログインした後店舗詳細画面にアクセスしてください。<br>
 
-- 店舗代表者追加画面  
+- 店舗代表者追加・CSV ファイルインポート画面  
   http://localhost/admin
-- csv ファイルインポート画面
 
   <br>
   ↑ これは管理者のみアクセスできます。<br>
@@ -417,3 +417,8 @@ php artisan db:seed
 `php artisan db:seed`で作成した情報は、`php artisan migrate:fresh`で一括削除できます。
 
 ## csv ファイルの書き方について
+
+```test.csv
+店舗名,地域,ジャンル,店舗概要,画像URL
+新しい店舗,東京都,焼肉,新しい店舗の説明文。,画像URL
+```

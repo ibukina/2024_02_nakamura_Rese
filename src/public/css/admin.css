@@ -1,22 +1,28 @@
 .content-admin {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-bottom: 150px;
-    padding-top: 50px;
+    padding-top: 0;
 }
 
-.register-wrapper {
+.register-wrapper, .csv-wrapper {
     width: 370px;
     height: 250px;
+    margin-bottom: 40px;
     background-color: white;
     border: none;
     border-radius: 5px;
     box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
 }
 
-.register-form_title {
+.csv-wrapper{
+    height: 200px;
+}
+
+.register-form_title, .csv-title {
     padding: 15px 20px;
     background-color: #3560F6;
     border-radius: 5px 5px 0 0;
@@ -24,14 +30,14 @@
     color: white;
 }
 
-.register-form {
+.register-form, .csv-form {
     display: flex;
     flex-direction: column;
     padding: 10px 30px;
     background-color: white;
 }
 
-.register-form_item {
+.register-form_item, .csv-form_item {
     margin: 5px 0 10px auto;
     background-color: white;
 }
@@ -53,7 +59,7 @@
     box-shadow: 0px 0px 100px 100px white inset;
 }
 
-.register-form_item-button {
+.register-form_item-button, .csv-form_button {
     margin-top: 5px;
     width: 45px;
     height: 25px;
@@ -62,6 +68,29 @@
     background-color: #3560F6;
     font-size: 11px;
     color: white;
+}
+
+.form-item_file {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px;
+    border-radius: 3px;
+    background-color: #5580F7;
+    color: white;
+}
+
+.form-item_input {
+    display: none;
+}
+
+.form-item_input-texts {
+    font-size: 11px;
+}
+
+.form-item_input-summary {
+    margin-top: -5px;
+    font-size: 9px;
 }
 
 .error-has {
@@ -73,7 +102,13 @@
     color: red;
 }
 
-.alert {
+.message {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    padding: 2px;
+    border-radius: 3px;
+    background-color: #3560F6;
     font-size: 14px;
-    color: #3560F6;
+    color: white;
 }
