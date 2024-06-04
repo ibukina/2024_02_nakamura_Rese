@@ -20,42 +20,36 @@ class ShopImport implements ToCollection, WithStartRow
     public function collection(Collection $rows)
     {
         foreach ($rows as $row) {
-            // // 画像をストレージに保存し、そのパスを取得
-            // $client = new Client([
-            //     'allow_redirects' => [
-            //         'max' => 10,  // 最大10回のリダイレクトを許可
-            //         'strict' => true,  // RFC準拠のリダイレクトを使用
-            //         'referer' => true,  // リダイレクト時にRefererヘッダーを追加
-            //         'track_redirects' => true
-            //     ]
-            // ]);
-            // $response = $client->get($row[4]);
-            // $imageContent = $response->getBody()->getContents();
+            // 画像をストレージに保存し、そのパスを取得
+            $client = new Client([
+                'allow_redirects' => [
+                    'max' => 10,  // 最大10回のリダイレクトを許可
+                    'strict' => true,  // RFC準拠のリダイレクトを使用
+                    'referer' => true,  // リダイレクト時にRefererヘッダーを追加
+                    'track_redirects' => true
+                ]
+            ]);
+            $response = $client->get($row[4]);
+            $imageContent = $response->getBody()->getContents();
 
-            // // ダウンロードした画像を一時ファイルに保存
-            // $tempPath = tempnam(sys_get_temp_dir(), 'csvimport');
-            // file_put_contents($tempPath, $imageContent);
+            // ダウンロードした画像を一時ファイルに保存
+            $tempPath = tempnam(sys_get_temp_dir(), 'csvimport');
+            file_put_contents($tempPath, $imageContent);
 
-            // // 一時ファイルをストレージに保存
-            // $imagePath = Storage::putFile('images', new \Illuminate\Http\File($tempPath));
+            // 一時ファイルをストレージに保存
+            $imagePath = Storage::putFile('public/image', new \Illuminate\Http\File($tempPath));
 
-            // // 一時ファイルを削除
-            // unlink($tempPath);
-
-            // ローカルファイルシステム上の画像ファイルのパス
-            $imagePath = $row[4];
-
-            // ファイルの内容を取得
-            $imageContent = file_get_contents($imagePath);
-
+            // 一時ファイルを削除
+            unlink($tempPath);
 
             // 画像をデータベースに保存し、そのIDを取得
-            $image = Image::create(['path' => $imagePath]);
+            $imageReadPath = str_replace('public/', 'storage/', $imagePath);
+            $image = Image::create(['image' => $imageReadPath]);
             $imageId = $image->id;
 
             // 地域とジャンルのIDを取得
-            $areaId = Area::where('name', $row[1])->first()->id;
-            $genreId = Genre::where('name', $row[2])->first()->id;
+            $areaId = Area::where('area', $row[1])->first()->id;
+            $genreId = Genre::where('genre', $row[2])->first()->id;
 
             // 店舗情報をデータベースに保存
             Shop::create([

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Exception\Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\ShopImport;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\CsvFileRequest;
 use App\Models\User;
 
 class AdminController extends Controller
@@ -25,7 +27,7 @@ class AdminController extends Controller
         return redirect('/admin')->with('message', '店舗管理者が追加されました');
     }
 
-    public function csvCreate(Request $request){
+    public function csvCreate(CsvFileRequest $request){
         if ($request->hasFile('csvFile')) {
             $file = $request->file('csvFile');
             Excel::import(new ShopImport, $file);
