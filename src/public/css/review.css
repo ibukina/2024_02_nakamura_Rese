@@ -200,3 +200,104 @@ textarea::placeholder{
 .error-message {
     font-size: 12px;
 }
+
+@media screen and (min-width:320px) and (max-width: 426px){
+    .content-review{
+        margin: 0 30px;
+    }
+
+    .shop-detail_wrapper{
+        margin: 0;
+    }
+
+    .shop-detail{
+        padding: 0 10px;
+    }
+
+    .review-question{
+        font-size: 14px;
+    }
+
+    .shop-container{
+        width: 90px;
+        height: 100px;
+    }
+
+    .shop-image_item{
+        height: 55px;
+    }
+
+    .detail-wrapper{
+        padding: 2px 5px 0;
+    }
+
+    .shop-name{
+        font-size: 9px;
+    }
+
+    .shop-tag_wrapper{
+        font-size: 6px;
+    }
+
+    .detail-mark_wrapper{
+        margin-top: -10px;
+        padding-top: 2px;
+    }
+
+    .detail-button{
+        width: 40px;
+        height: 13px;
+        padding: 2px;
+        border-radius: 2px;
+        font-size: 6px;
+    }
+
+    .favorite-button{
+        width: 20px;
+        height: 35px;
+    }
+
+    .favorite-mark_image-gray, .favorite-mark_image-red{
+        width: 14px;
+        height: 14px;
+        margin-top: 7px;
+    }
+
+    .review-form{
+        margin: -25px 0;
+        padding-left: 20px;
+    }
+
+    .form-item_title{
+        margin: 10px 0 0;
+        font-size: 12px;
+    }
+
+    .star.filled, .star{
+        font-size: 20px;
+    }
+
+    .form-item_text, .form-item_input-message{
+        font-size: 9px;
+    }
+
+    .form-item_text-limit{
+        width: 43%;
+        font-size: 6px;
+    }
+
+    .form-item_input-wrapper{
+        height: 60px;
+        padding: 0;
+    }
+
+    .form-item_input-summary{
+        font-size: 7px;
+    }
+
+    .review-button{
+        margin-top: 15px;
+        height: 18px;
+        font-size: 8px;
+    }
+}

@@ -261,3 +261,94 @@
         height: 22px;
     }
 }
+
+@media screen and (min-width:320px) and (max-width: 426px){
+    .content-mypage{
+        margin: 0 30px;
+    }
+
+    .reservation-wrapper, .favorite-wrapper{
+        width: 50%;
+    }
+
+    .reservation-wrapper{
+        margin-top: 20px;
+    }
+
+    .reservation-title, .mypage-username{
+        font-size: 14px;
+    }
+
+    .reservation-information{
+        width: 100%;
+        height: auto;
+        margin: 10px 0 0 0;
+        padding: 10px;
+    }
+
+    .reservation-information_title{
+        padding-right: 5px;
+    }
+
+    .update-button, .update-button_image, .delete-button, .delete-button_image{
+        width: 12px;
+        height: 12px;
+    }
+
+    .reservation-number, .table-header, .table-data{
+        font-size: 8px;
+    }
+
+    .table-header, .table-data{
+        height: 15px;
+    }
+
+    .favorite-title{
+        font-size: 12px;
+    }
+
+    .shop-container{
+        width: 120px;
+        height: 100px;
+        margin: 5px 5px 15px 0;
+    }
+
+    .shop-image_item{
+        height: 55px;
+    }
+
+    .detail-wrapper{
+        padding: 2px 5px 0;
+    }
+
+    .shop-name{
+        font-size: 9px;
+    }
+
+    .shop-tag_wrapper{
+        font-size: 6px;
+    }
+
+    .detail-mark_wrapper{
+        margin-top: -15px;
+        padding-top: 2px;
+    }
+
+    .detail-button{
+        width: 50px;
+        height: 13px;
+        border-radius: 2px;
+        font-size: 6px;
+    }
+
+    .favorite-button{
+        width: 20px;
+        height: 35px;
+    }
+
+    .favorite-mark_image-gray, .favorite-mark_image-red{
+        width: 14px;
+        height: 14px;
+        margin-top: 7px;
+    }
+}

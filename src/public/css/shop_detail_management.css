@@ -191,3 +191,77 @@ select::-ms-expand {
     font-size: 17px;
     color: #003FF5;
 }
+
+@media screen and (min-width:320px) and (max-width: 426px){
+    .content-detail{
+        display: flow-root;
+        margin: 0 30px;
+    }
+
+    .detail-wrapper{
+        width: 100%;
+    }
+
+    .detail-title{
+        font-size: 15px;
+    }
+
+    .back-form_button{
+        width: 25px;
+        height: 25px;
+        font-size: 15px;
+    }
+
+    .shop-image{
+        margin: 0;
+    }
+
+    .shop-tag_wrapper{
+        margin: 5px 0;
+        font-size: 8px;
+    }
+
+    .shop-summary{
+        font-size: 8px;
+    }
+
+    .update-form{
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .review-all_link{
+        height: 25px;
+        margin-top: 10px;
+        font-size: 10px;
+    }
+
+    .update-title_wrapper{
+        flex-direction: column;
+    }
+
+    .update-title{
+        font-size: 10px;
+    }
+
+    .store-link{
+        width: 100%;
+        margin-top: 5px;
+        font-size: 10px;
+    }
+
+    .form-item_input{
+        height: 17px;
+        border-radius: 2px;
+        background-size: 10px 10px;
+        font-size: 8px;
+    }
+
+    .form-item_textarea{
+        height: 40px;
+    }
+
+    .result-wrapper{
+        font-size: 8px;
+    }
+}

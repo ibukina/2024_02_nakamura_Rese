@@ -218,3 +218,72 @@ select::-ms-expand {
     font-size: 17px;
     color: #003FF5;
 }
+
+@media screen and (min-width:320px) and (max-width: 426px){
+    .content-detail{
+        display: flow-root;
+        margin: 0 30px;
+    }
+
+    .detail-wrapper{
+        width: 100%;
+    }
+
+    .detail-title{
+        font-size: 15px;
+    }
+
+    .back-form_button{
+        width: 25px;
+        height: 25px;
+        font-size: 15px;
+    }
+
+    .shop-image{
+        margin: 0;
+    }
+
+    .shop-tag_wrapper{
+        margin: 5px 0;
+        font-size: 8px;
+    }
+
+    .shop-summary{
+        font-size: 8px;
+    }
+
+    .review-all_link{
+        height: 25px;
+        margin-top: 10px;
+        font-size: 10px;
+    }
+
+    .review-edit_link, .review-delete_link{
+        font-size: 8px;
+    }
+
+    .star.filled, .star{
+        font-size: 20px;
+    }
+
+    .user-review, .review-link{
+        font-size: 9px;
+    }
+
+    .reservation-form{
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .update-title_wrapper{
+        flex-direction: column;
+    }
+
+    .reservation-title{
+        font-size: 10px;
+    }
+
+    .result-wrapper{
+        font-size: 8px;
+    }
+}
