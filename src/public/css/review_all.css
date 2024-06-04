@@ -92,3 +92,61 @@
 .user-review {
     font-size: 10px;
 }
+
+@media screen and (min-width:320px) and (max-width: 426px) {
+    .content-all_review {
+        flex-direction: column;
+        margin: 0 30px;
+    }
+
+    .shop-detail_wrapper, .review-wrapper {
+        margin: 0;
+        width: 100%;
+        border: none;
+    }
+
+    .detail-title{
+        align-items: baseline;
+    }
+
+    .shop-detail {
+        padding: 0 10px;
+    }
+
+    .back-form_button{
+        width: 25px;
+        height: 25px;
+        font-size: 15px;
+    }
+
+    .shop-name{
+        font-size: 14px;
+    }
+
+    .shop-image{
+        margin: 0;
+    }
+
+    .shop-tag_wrapper{
+        margin: 5px 0;
+        font-size: 8px;
+    }
+
+    .shop-summary{
+        font-size: 8px;
+    }
+
+    .review-title{
+        margin-bottom: 0;
+        font-size: 14px;
+    }
+
+    .star.filled,
+    .star {
+        font-size: 20px;
+    }
+
+    .review-detail_wrapper{
+        width: 100%;
+    }
+}

@@ -71,12 +71,10 @@
                     <div class="shop-tag_genre">#{{ $shop->genre->genre }}</div>
                 </div>
                 <div class="detail-mark_wrapper">
-                    <div class="detail-button_wrapper">
-                        <form class="detail_form" action="/detail/{{$shop->id}}" method="get">
-                            @csrf
-                            <button class="detail-button">詳しくみる</button>
-                        </form>
-                    </div>
+                    <form class="detail_form" action="/detail/{{$shop->id}}" method="get">
+                        @csrf
+                        <button class="detail-button">詳しくみる</button>
+                    </form>
                     @can('user-only')
                     @if(Auth::check() && !empty($favorites))
                     @if(isset($favorites[$shop->id]))

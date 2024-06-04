@@ -94,12 +94,10 @@
                         <div class="shop-tag_genre">#{{ $favorite->shop->genre->genre }}</div>
                     </div>
                     <div class="detail-mark_wrapper">
-                        <div class="detail-button_wrapper">
-                            <form class="detail_form" action="/detail/{{ $favorite->shop->id }}" method="get">
-                                @csrf
-                                <button class="detail-button">詳しくみる</button>
-                            </form>
-                        </div>
+                        <form class="detail_form" action="/detail/{{ $favorite->shop->id }}" method="get">
+                            @csrf
+                            <button class="detail-button">詳しくみる</button>
+                        </form>
                         <form class="favorite-form" action="/favorite" method="post">
                             @method('DELETE')
                             @csrf

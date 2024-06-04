@@ -92,3 +92,9 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 .error-message {
     font-size: 12px;
 }
+
+@media screen and (min-width:320px) and (max-width: 426px){
+    .update-form{
+        width: 100%;
+    }
+}
