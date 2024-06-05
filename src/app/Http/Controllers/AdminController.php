@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Exception\Exception;
+use App\Services\ShopImport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Imports\ShopImport;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\CsvFileRequest;
 use App\Models\User;
 
 class AdminController extends Controller
 {
+    protected $shopImportService;
+
+    public function __construct(ShopImport $shopImportService){
+        $this->shopImportService=$shopImportService;
+    }
+
     public function create(){
         return view('admin');
     }
@@ -28,12 +32,12 @@ class AdminController extends Controller
     }
 
     public function csvCreate(CsvFileRequest $request){
-        if ($request->hasFile('csvFile')) {
-            $file = $request->file('csvFile');
-            Excel::import(new ShopImport, $file);
-        } else {
-            throw new Exception('CSVファイルの取得に失敗しました。');
+        $file = $request->file('csvFile');
+        $filePath=$file->storeAs('csv', $file->getClientOriginalName());
+        $errors=$this->shopImportService->importFromCsv(storage_path('app/' . $filePath));
+        if(!empty($errors)){
+            return redirect()->back()->withErrors($errors);
         }
-        return redirect()->back()->with('message', '店舗が追加されました');
+        return redirect()->back()->with('message', 'CSVファイルのインポートに成功しました');
     }
 }

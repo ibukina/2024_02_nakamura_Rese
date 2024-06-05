@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ImageRequest extends FormRequest
+class CsvImageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,12 @@ class ImageRequest extends FormRequest
     public function rules()
     {
         return [
-            'store_image'=>['required', 'file', 'image', 'mimes:jpg,jpeg,png',],
+            'store_image'=>['file', 'image', 'mimes:jpg,jpeg,png',],
         ];
     }
 
     public function messages(){
         return[
-            'store_image.required'=>'画像を選択してください',
             'store_image.file'=>'画像のアップロードが出来ていません',
             'store_image.image'=>'画像ファイルを選択してください',
             'store_image.mimes'=>'画像ファイルはjpg,jpeg,pngの形式のもののみアップロード可能です',

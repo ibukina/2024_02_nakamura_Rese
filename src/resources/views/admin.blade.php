@@ -54,6 +54,13 @@
                 <li class="error-message">{{$error}}</li>
                 @endforeach
                 @endif
+                @if ($errors->any())
+                @foreach($errors->all() as $error)
+                <div class="alert alert-danger">
+                    {{ $error }}
+                </div>
+                @endforeach
+                @endif
                 <label class="csv-form_item">
                     <button class="csv-form_button">送信</button>
                 </label>
