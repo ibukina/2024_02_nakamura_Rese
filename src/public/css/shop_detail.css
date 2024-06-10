@@ -176,6 +176,7 @@ select::-ms-expand {
     margin: 10px 0 40px;
     padding: 10px;
     text-align: left;
+    white-space: nowrap;
     border-radius: 4px;
     background-color: #5580F7;
     font-size: 12px;
@@ -217,6 +218,47 @@ select::-ms-expand {
     margin: auto;
     font-size: 17px;
     color: #003FF5;
+}
+
+@media screen and (min-width:1440px){
+    .shop-image_has-review{
+        height: 350px;
+    }
+
+    .shop-tag_wrapper, .shop-summary, .user-review{
+        font-size: 15px;
+    }
+
+    .review-all_link{
+        height: 40px;
+        font-size: 17px;
+    }
+
+    .review-edit_form-wrapper{
+        font-size: 13px;
+    }
+
+    .star{
+        font-size: 40px;
+    }
+
+    .reservation-title{
+        font-size: 25px;
+    }
+
+    .form-item_input, .form-item_select{
+        height: 40px;
+        margin-top: 10px;
+        font-size: 20px;
+    }
+
+    .result-wrapper{
+        font-size: 20px;
+    }
+
+    .reservation-button{
+        font-size: 18px;
+    }
 }
 
 @media screen and (min-width:320px) and (max-width: 426px){
